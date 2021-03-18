@@ -1,0 +1,27 @@
+{
+  "name": "main_web",
+  "version": "1.0.0",
+  "description": "Testovací web na všechno.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wojtic/main_web.git"
+  },
+  "keywords": [
+    "main",
+    "web",
+    "test"
+  ],
+  "author": "Vojtěch Černý",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wojtic/main_web/issues"
+  },
+  "homepage": "https://github.com/Wojtic/main_web#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
