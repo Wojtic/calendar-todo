@@ -1,0 +1,14 @@
+footer {
+  background-color: $nav;
+  color: $text-nav;
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  h3,
+  p {
+    display: flex;
+    justify-content: center;
+  }
+}

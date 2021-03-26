@@ -1,0 +1,38 @@
+nav {
+  color: $text-nav;
+  background-color: $nav;
+  height: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  a {
+    padding: 0 2rem;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: $nav-hover-text;
+      background-color: $nav-hover;
+      transition: 0.2s ease;
+    }
+  }
+
+  ul {
+    height: 100%;
+    display: flex;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  h3 {
+    padding: 0 5rem;
+  }
+}

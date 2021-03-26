@@ -1,0 +1,22 @@
+@import "./colors";
+@import "./nav";
+@import "./footer";
+@import "./calendar";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  color: $text;
+  height: auto;
+  margin: 0 auto;
+  width: 90%;
+}
