@@ -1,6 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
+require('dotenv').config();
 
 const express = require('express');
 const app = express();
@@ -21,11 +19,11 @@ initializePassport(
 app.use(express.urlencoded({ extended: false }));
 
 app.listen(3000, () => console.log('Listening at 3000'));
-app.use(express.static('public'));
+app.use(express.static('src/public'));
 
 app.use(flash());
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'secret',
     resave: false,
     saveUninitialized: false
 }));
