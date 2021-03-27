@@ -1,0 +1,70 @@
+<!DOCTYPE html5>
+<html lang="cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Register</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <h3>Logo</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calendar.html">Kalendář</a></li>
+        <li><a href="login.html">Log in</a></li>
+      </ul>
+    </nav>
+    <main>
+      <form action="/register" method="POST" id="register_form">
+        <label for="uname">Přezdívka:</label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Napiš přezdívku"
+          required
+          minlength="2"
+          maxlength="10"
+        />
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Napiš email" required />
+
+        <label for="psw">Heslo: </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Napiš heslo"
+          required
+          minlength="4"
+          maxlength="20"
+        />
+        <input
+          type="password"
+          name="password_conf"
+          placeholder="Zopakuj heslo"
+          required
+          minlength="4"
+          maxlength="20"
+        />
+
+        <button type="submit">Vytvořit účet</button>
+      </form>
+      <p>Máš účet? <a href="login.html">Přihlásit se.</a></p>
+    </main>
+    <footer>
+      <h3>Vojtěch Černý</h3>
+      <p>Lorem Ipsum</p>
+    </footer>
+  </body>
+</html>

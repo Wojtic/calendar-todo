@@ -68,6 +68,9 @@ footer {
           flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 footer h3,
@@ -175,13 +178,81 @@ footer p {
   border-right: 1px solid black;
 }
 
+#register_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-shadow: 4px 4px lightblue;
+          box-shadow: 4px 4px lightblue;
+  width: 30%;
+  height: 80%;
+  border: 2px solid #335599;
+  border-radius: 1rem;
+  padding: 0 5%;
+}
+
+#register_form label {
+  font-weight: bold;
+}
+
+#register_form input {
+  font-size: large;
+  width: 90%;
+  height: 10%;
+  border: 1px solid darkgray;
+  border-radius: 0.5rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#register_form button {
+  background: none;
+  border: 4px solid #335599;
+  -webkit-box-shadow: 4px 4px lightblue;
+          box-shadow: 4px 4px lightblue;
+  border-radius: 0.5rem;
+  font-size: large;
+  height: 15%;
+  width: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#register_form button:hover {
+  background-color: #e8f9ff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 800px) {
+  #register_form {
+    width: 80%;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
   font-family: Roboto;
 }
 
+html,
 body {
+  min-height: 100%;
+  height: auto;
+}
+
+body {
+  height: 100%;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -206,7 +277,7 @@ main {
           align-items: center;
   color: #000;
   height: 35rem;
+  width: 100%;
   margin: 0 auto;
-  width: 90%;
 }
 /*# sourceMappingURL=style.css.map */

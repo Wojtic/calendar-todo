@@ -5,6 +5,9 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 
   h3,
   p {
