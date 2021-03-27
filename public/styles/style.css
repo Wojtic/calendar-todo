@@ -83,6 +83,7 @@ footer p {
 .calendar {
   height: auto;
   width: 80rem;
+  border-collapse: collapse;
 }
 
 .calendar .hours {
@@ -117,6 +118,24 @@ footer p {
   text-align: center;
 }
 
+.calendar .day .events {
+  position: relative;
+}
+
+.calendar .day .events .event {
+  position: absolute;
+  top: 0rem;
+  height: 100%;
+}
+
+.calendar tr {
+  border: 1px solid black;
+}
+
+.calendar td:first-child {
+  border-right: 1px solid black;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -147,7 +166,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   color: #000;
-  height: auto;
+  height: 35rem;
   margin: 0 auto;
   width: 90%;
 }

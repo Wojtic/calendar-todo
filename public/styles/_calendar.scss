@@ -1,6 +1,7 @@
 .calendar {
   height: auto;
   width: 80rem;
+  border-collapse: collapse;
 
   .hours {
     font-weight: normal;
@@ -24,5 +25,23 @@
       line-height: 5rem;
       text-align: center;
     }
+    .events {
+      position: relative;
+
+      .event {
+        position: absolute;
+        top: 0rem;
+        height: 100%;
+        //Other atributes will be aded to each event
+      }
+    }
+  }
+
+  tr {
+    border: 1px solid black;
+  }
+
+  td:first-child {
+    border-right: 1px solid black;
   }
 }
