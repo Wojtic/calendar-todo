@@ -178,7 +178,8 @@ footer p {
   border-right: 1px solid black;
 }
 
-#register_form {
+#register_form,
+#login_form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -197,11 +198,13 @@ footer p {
   padding: 0 5%;
 }
 
-#register_form label {
+#register_form label,
+#login_form label {
   font-weight: bold;
 }
 
-#register_form input {
+#register_form input,
+#login_form input {
   font-size: large;
   width: 90%;
   height: 10%;
@@ -212,7 +215,8 @@ footer p {
       align-self: center;
 }
 
-#register_form button {
+#register_form button,
+#login_form button {
   background: none;
   border: 4px solid #335599;
   -webkit-box-shadow: 4px 4px lightblue;
@@ -226,14 +230,16 @@ footer p {
       align-self: center;
 }
 
-#register_form button:hover {
+#register_form button:hover,
+#login_form button:hover {
   background-color: #e8f9ff;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 @media only screen and (max-width: 800px) {
-  #register_form {
+  #register_form,
+  #login_form {
     width: 80%;
   }
 }

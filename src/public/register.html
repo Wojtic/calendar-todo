@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/styles/style.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/register.js"></script>
   </head>
   <body>
     <nav>
@@ -26,8 +27,8 @@
       </ul>
     </nav>
     <main>
-      <form action="/register" method="POST" id="register_form">
-        <label for="uname">Přezdívka:</label>
+      <form action="#" id="register_form">
+        <label for="username">Přezdívka:</label>
         <input
           type="text"
           name="username"
@@ -40,7 +41,7 @@
         <label for="email">Email:</label>
         <input type="email" name="email" placeholder="Napiš email" required />
 
-        <label for="psw">Heslo: </label>
+        <label for="password">Heslo: </label>
         <input
           type="password"
           name="password"
@@ -51,7 +52,7 @@
         />
         <input
           type="password"
-          name="password_conf"
+          name="password_confirm"
           placeholder="Zopakuj heslo"
           required
           minlength="4"

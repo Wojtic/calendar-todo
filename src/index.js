@@ -19,7 +19,7 @@ initializePassport(
 app.use(express.urlencoded({ extended: false }));
 
 app.listen(3000, () => console.log('Listening at 3000'));
-app.use(express.static('src/public'));
+app.use(express.static('./src/public'));
 
 app.use(flash());
 app.use(session({
