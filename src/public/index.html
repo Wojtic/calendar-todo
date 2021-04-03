@@ -1,6 +1,7 @@
 <!DOCTYPE html5>
 <html lang="cz" dir="ltr">
   <head>
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,23 +13,31 @@
     />
     <link rel="stylesheet" href="/styles/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/nav.js"></script>
   </head>
 
   <body>
-    <nav>
-      <h3>Logo</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="calendar.html">Kalendář</a></li>
-        <li><a href="login.html">Log in</a></li>
-      </ul>
-    </nav>
-    <main>
-      <h2>Ahoj Míšo</h2>
-    </main>
-    <footer>
-      <h3>Vojtěch Černý</h3>
-      <p>Lorem Ipsum</p>
-    </footer>
+    <div class="wraper">
+      <nav>
+        <h3>Logo</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="calendar.html">Kalendář</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+        <div class="burger">
+          <div id="burger1"></div>
+          <div id="burger2"></div>
+          <div id="burger3"></div>
+        </div>
+      </nav>
+      <main>
+        <h2>Ahoj Míšo</h2>
+      </main>
+      <footer>
+        <h3>Vojtěch Černý</h3>
+        <p>Lorem Ipsum</p>
+      </footer>
+    </div>
   </body>
 </html>

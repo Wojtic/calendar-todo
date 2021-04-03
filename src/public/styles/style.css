@@ -8,9 +8,6 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 nav a {
@@ -41,6 +38,7 @@ nav a:hover {
 }
 
 nav ul {
+  background-color: inherit;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,7 +50,79 @@ nav ul li {
 }
 
 nav h3 {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   padding: 0 5rem;
+}
+
+nav .burger {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  height: 85%;
+  width: 4rem;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+nav .burger div {
+  width: 70%;
+  height: 8%;
+  border-radius: 5px;
+  background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+  nav {
+    z-index: 1;
+  }
+  nav ul {
+    -webkit-transition: -webkit-transform 0.5s ease-in;
+    transition: -webkit-transform 0.5s ease-in;
+    transition: transform 0.5s ease-in;
+    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    position: absolute;
+    right: 0px;
+    top: 3.5rem;
+    height: auto;
+    width: 50%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  nav ul li {
+    height: 3.5rem;
+  }
+  nav .burger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+  }
+}
+
+.nav_active {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+@media screen and (max-width: 600px) {
+  .wraper {
+    overflow-x: hidden;
+  }
 }
 
 footer {
@@ -191,11 +261,12 @@ footer p {
       justify-content: space-around;
   -webkit-box-shadow: 4px 4px lightblue;
           box-shadow: 4px 4px lightblue;
-  width: 30%;
-  height: 80%;
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
   border: 2px solid #335599;
   border-radius: 1rem;
-  padding: 0 5%;
+  padding: 1rem 1rem;
 }
 
 #register_form label,
@@ -206,7 +277,7 @@ footer p {
 #register_form input,
 #login_form input {
   font-size: large;
-  width: 90%;
+  width: 20rem;
   height: 10%;
   border: 1px solid darkgray;
   border-radius: 0.5rem;
@@ -223,7 +294,7 @@ footer p {
           box-shadow: 4px 4px lightblue;
   border-radius: 0.5rem;
   font-size: large;
-  height: 15%;
+  height: 4rem;
   width: 50%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -237,10 +308,18 @@ footer p {
   transition: 0.5s;
 }
 
-@media only screen and (max-width: 800px) {
+#register_form p,
+#login_form p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+@media only screen and (max-height: 600px) {
   #register_form,
   #login_form {
-    width: 80%;
+    position: absolute;
+    top: 1rem;
   }
 }
 
@@ -250,13 +329,12 @@ footer p {
   font-family: Roboto;
 }
 
-html,
-body {
+html {
   min-height: 100%;
   height: auto;
 }
 
-body {
+body, .wraper {
   height: 100%;
   position: relative;
   display: -webkit-box;
@@ -281,6 +359,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
   color: #000;
   height: 35rem;
   width: 100%;

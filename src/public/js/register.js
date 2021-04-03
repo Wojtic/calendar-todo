@@ -1,6 +1,5 @@
-
 $(document).ready(function() {
-    $("#register_form").submit(e => {
+    $("#register_form").submit(async e => {
         e.preventDefault(e);
         let serializedData = $('#register_form').serializeArray();
         if (serializedData[2].name != 'password' || serializedData[3].name != 'password_confirm') {
@@ -12,11 +11,16 @@ $(document).ready(function() {
             return;
         }
 
-        fetch('/register', {
+        let response = await fetch('/register', {
             method: 'POST',
             body: new URLSearchParams([...new FormData(e.target).entries()])
-        }).then(response => {
-            console.log(response);
         })
+        if (response.ok) {
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        } else {
+            console.log('HTTP error: ' + response.status);
+        }
     });
 });
