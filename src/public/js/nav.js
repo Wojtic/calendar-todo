@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(async function () {
     $(".burger").click(() => {
         if ($("nav ul").hasClass("nav_active")) {
             $("nav ul").removeClass("nav_active");
@@ -8,4 +8,15 @@ $(document).ready(function () {
             $(".burger").addClass("toggle");
         }
     });
+
+    let response = await fetch('/check_user', {
+        method: 'POST'
+    });
+
+    response = await response.json();
+
+    if (response.loggedIn) {
+        $("nav ul").children().last().remove();
+        $("nav ul").append("<li><p>" + response.username + "</p></li>");
+    }
 })

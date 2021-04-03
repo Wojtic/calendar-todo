@@ -51,3 +51,12 @@ app.post('/register', async (req, res) => {
     }
     console.log(users);
 });
+
+app.post('/check_user', async (req, res) => {
+    if (req.user) {
+        res.send({loggedIn: true,
+        username: req.user.username});
+    } else {
+        res.send({loggedIn: false});
+    }
+});

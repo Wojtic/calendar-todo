@@ -58,6 +58,12 @@ nav h3 {
   padding: 0 5rem;
 }
 
+nav p {
+  padding: 0 1rem;
+  height: auto;
+  font-size: small;
+}
+
 nav .burger {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -141,34 +147,6 @@ nav .burger div {
   .wraper {
     overflow-x: hidden;
   }
-}
-
-footer {
-  background-color: #335599;
-  color: #fff;
-  height: 4rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-footer h3,
-footer p {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .calendar {
