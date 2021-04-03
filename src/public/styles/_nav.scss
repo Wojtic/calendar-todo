@@ -4,6 +4,7 @@ nav {
   height: 3.5rem;
   display: flex;
   justify-content: space-between;
+  flex-shrink: 0;
 
   a {
     padding: 0 2rem;
@@ -39,7 +40,7 @@ nav {
 
   .burger {
     align-self: center;
-    height: 85%;
+    height: 3rem;
     width: 4rem;
     display: none;
     flex-direction: column;
@@ -52,6 +53,7 @@ nav {
       height: 8%;
       border-radius: 5px;
       background-color: white;
+      transition: all 0.3s ease-in;
     }
   }
 
@@ -82,6 +84,18 @@ nav {
 
 .nav_active {
   transform: translateX(0%);
+}
+
+.toggle #burger1 {
+  transform: rotate(45deg) translate(0.1rem, 0.9rem);
+}
+
+.toggle #burger2 {
+  opacity: 0;
+}
+
+.toggle #burger3 {
+  transform: rotate(-45deg) translate(0.2rem, -1rem);
 }
 
 @media screen and (max-width: 600px) {

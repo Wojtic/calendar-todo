@@ -8,6 +8,8 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 nav a {
@@ -60,7 +62,7 @@ nav .burger {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  height: 85%;
+  height: 3rem;
   width: 4rem;
   display: none;
   -webkit-box-orient: vertical;
@@ -80,6 +82,8 @@ nav .burger div {
   height: 8%;
   border-radius: 5px;
   background-color: white;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 @media screen and (max-width: 600px) {
@@ -117,6 +121,20 @@ nav .burger div {
 .nav_active {
   -webkit-transform: translateX(0%);
           transform: translateX(0%);
+}
+
+.toggle #burger1 {
+  -webkit-transform: rotate(45deg) translate(0.1rem, 0.9rem);
+          transform: rotate(45deg) translate(0.1rem, 0.9rem);
+}
+
+.toggle #burger2 {
+  opacity: 0;
+}
+
+.toggle #burger3 {
+  -webkit-transform: rotate(-45deg) translate(0.2rem, -1rem);
+          transform: rotate(-45deg) translate(0.2rem, -1rem);
 }
 
 @media screen and (max-width: 600px) {
