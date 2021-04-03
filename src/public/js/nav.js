@@ -17,6 +17,6 @@ $(document).ready(async function () {
 
     if (response.loggedIn) {
         $("nav ul").children().last().remove();
-        $("nav ul").append("<li><p>" + response.username + "</p></li>");
+        $("nav ul").append('<li><i class="fa fa-user-circle fa-2x"></i><p>' + response.username + '</p></li>');
     }
 })

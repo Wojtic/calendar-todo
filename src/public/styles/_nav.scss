@@ -30,6 +30,10 @@ nav {
 
     li {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
     }
   }
 
@@ -78,6 +82,11 @@ nav {
 
       li {
         height: 3.5rem;
+
+        a {
+          padding: 0;
+          width: 100%;
+        }
       }
     }
 
