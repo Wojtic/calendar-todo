@@ -23,4 +23,12 @@ $(document).ready(function() {
             console.log('HTTP error: ' + response.status);
         }
     });
+
+    $('input[name=password_confirm], input[name=password]').on("input", () => {
+        if ($('input[name=password_confirm]').val() !== $('input[name=password]').val()) {
+           $('input[name=password_confirm]').get(0).setCustomValidity("Hesla se neshodují!");
+        } else {
+           $('input[name=password_confirm]').get(0).setCustomValidity("");
+        }
+    })
 });
