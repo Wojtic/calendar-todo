@@ -8,13 +8,39 @@ const flash = require('express-flash');
 const session = require('express-session');
 const mysql = require('mysql');
 
-let users = [];
+let con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "7qGAaj8t3SstjX",
+    database: "calendar_todo"
+});
+
+con.connect((err) => {
+    if (err) throw err;
+    console.log("Connedcted to MySQL")
+})
 
 const initializePassport = require('./passport-config');
 initializePassport(
     passport,
-    username => users.find(user => user.username === username),
-    id => users.find(user => user.id === id)
+    (username, callback) => {
+        let sql = `SELECT * FROM users WHERE username='${username}'`;
+        let user;
+        con.query(sql, (err, result) => {
+            if (err) throw err;
+            user = JSON.parse(JSON.stringify(result))[0];
+            return callback(null, user);
+        });
+    },
+    (id, callback) => {
+        let sql = `SELECT * FROM users WHERE id='${id}'`;
+        let user;
+        con.query(sql, (err, result) => {
+            if (err) throw err;
+            user = JSON.parse(JSON.stringify(result))[0];
+            return callback(null, user);
+        });
+    }
 );
 
 app.use(express.urlencoded({ extended: false }));
@@ -31,21 +57,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-let con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "7qGAaj8t3SstjX",
-    database: "calendar_todo"
-});
-
-con.connect((err) => {
-    if (err) throw err;
-    console.log("Connedcted to MySQL")
-})
-
-
-
-
 
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
@@ -56,17 +67,15 @@ app.post('/login', passport.authenticate('local', {
 app.post('/register', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        users.push({
-            id: Date.now().toString(),
-            username: req.body.username,
-            email: req.body.email,
-            password: hashedPassword
+
+        let sql = `INSERT INTO users (username, email, password) VALUES ('${req.body.username}', '${req.body.email}', '${hashedPassword}')`;
+        con.query(sql, (err, result) => {
+            if (err) throw err;
         });
         res.redirect('login.html');
     } catch {
         res.redirect('register.html');
     }
-    console.log(users);
 });
 
 app.post('/check_user', async (req, res) => {
