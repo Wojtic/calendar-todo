@@ -16,11 +16,9 @@ $(document).ready(function() {
             body: new URLSearchParams([...new FormData(e.target).entries()])
         })
         if (response.ok) {
-            if (response.redirected) {
-                window.location.href = response.url;
-            }
+            if (response.redirected) window.location.href = response.url;
         } else {
-            console.log('HTTP error: ' + response.status);
+            console.error('HTTP error: ' + response.status);
         }
     });
 

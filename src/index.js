@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const mysql = require('mysql');
 
 let users = [];
 
@@ -29,6 +30,22 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+let con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "7qGAaj8t3SstjX",
+    database: "calendar_todo"
+});
+
+con.connect((err) => {
+    if (err) throw err;
+    console.log("Connedcted to MySQL")
+})
+
+
+
+
 
 app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
