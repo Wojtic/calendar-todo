@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(async () => {
     let response = await fetch('/check_user', {
         method: 'POST'
     });
@@ -6,6 +6,7 @@ $(document).ready(function() {
     response = await response.json();
 
     if (response.loggedIn) {
-        $('main').append("");
+        console.log("here")
+        $("main").append(`<div class="user"><i class="fa fa-user-circle fa-2x"></i><a href="/log_out">Odhlásit se</a></div>`);
     }
 });

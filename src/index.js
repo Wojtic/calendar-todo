@@ -85,6 +85,11 @@ app.post('/register', (req, res) => {
     });
 });
 
+app.get('/log_out', (req, res) => {
+    req.logOut();
+    res.redirect('/');
+});
+
 app.post('/check_user', async (req, res) => {
     if (req.user) {
         res.send({
