@@ -17,6 +17,8 @@ $(document).ready(function() {
         })
         if (response.ok) {
             if (response.redirected) window.location.href = response.url;
+            response = await response.json();
+            if (response.userExists) alert("Uživatel s tímto emailem už existuje.");
         } else {
             console.error('HTTP error: ' + response.status);
         }

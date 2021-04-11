@@ -23,8 +23,8 @@ con.connect((err) => {
 const initializePassport = require('./passport-config');
 initializePassport(
     passport,
-    (username, callback) => {
-        let sql = `SELECT * FROM users WHERE username='${username}'`;
+    (email, callback) => {
+        let sql = `SELECT * FROM users WHERE email='${email}'`;
         let user;
         con.query(sql, (err, result) => {
             if (err) throw err;
@@ -64,25 +64,34 @@ app.post('/login', passport.authenticate('local', {
     failureFlash: true
 }));
 
-app.post('/register', async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+app.post('/register', (req, res) => {
+    con.query(`SELECT * FROM users WHERE email='${req.body.email}'`, async (err, result) => {
+        if (err) throw err;
+        if (result[0]) {
+            res.send({ userExists: true });
+        } else {
+            try {
+                const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        let sql = `INSERT INTO users (username, email, password) VALUES ('${req.body.username}', '${req.body.email}', '${hashedPassword}')`;
-        con.query(sql, (err, result) => {
-            if (err) throw err;
-        });
-        res.redirect('login.html');
-    } catch {
-        res.redirect('register.html');
-    }
+                const sql = `INSERT INTO users (username, email, password) VALUES ('${req.body.username}', '${req.body.email}', '${hashedPassword}')`;
+                con.query(sql, (err, result) => {
+                    if (err) throw err;
+                });
+                res.redirect('login.html');
+            } catch {
+                res.redirect('register.html');
+            }
+        }
+    });
 });
 
 app.post('/check_user', async (req, res) => {
     if (req.user) {
-        res.send({loggedIn: true,
-        username: req.user.username});
+        res.send({
+            loggedIn: true,
+            username: req.user.username
+        });
     } else {
-        res.send({loggedIn: false});
+        res.send({ loggedIn: false });
     }
 });
