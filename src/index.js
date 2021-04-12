@@ -21,6 +21,7 @@ con.connect((err) => {
 })
 
 const initializePassport = require('./passport-config');
+const { response } = require('express');
 initializePassport(
     passport,
     (email, callback) => {
@@ -88,6 +89,14 @@ app.post('/register', (req, res) => {
 app.get('/log_out', (req, res) => {
     req.logOut();
     res.redirect('/');
+});
+
+app.get('/delete_account', (req, res) => {
+    con.query(`DELETE FROM users WHERE id='${req.user.id}'`, (err, response) => {
+        if (err) throw err;
+        req.logOut();
+        res.redirect('/');
+    });
 });
 
 app.post('/check_user', async (req, res) => {
