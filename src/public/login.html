@@ -1,0 +1,62 @@
+<!DOCTYPE html5>
+<html lang="cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="./icons/icon.ico" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/nav.js"></script>
+
+    <title>Log in</title>
+  </head>
+  <body>
+    <div class="wraper">
+      <nav>
+        <img src="./icons/test.png" alt="<h3>Logo</h3>" height="90%" />
+        <ul>
+          <li><a href="index.html">domů</a></li>
+          <li><a href="calendar.html">Kalendář</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+        <div class="burger">
+          <div id="burger1"></div>
+          <div id="burger2"></div>
+          <div id="burger3"></div>
+        </div>
+      </nav>
+      <main>
+        <form action="#" id="login_form">
+          <label for="email">Email:</label>
+          <input type="email" name="email" placeholder="Napiš email" required />
+
+          <label for="password">Heslo: </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Napiš heslo"
+            required
+            minlength="4"
+            maxlength="20"
+          />
+
+          <button type="submit">Přihlásit se</button>
+          <p>Nemáš účet? <a href="register.html">Vytvořit účet.</a></p>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

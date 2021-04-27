@@ -1,0 +1,93 @@
+<!DOCTYPE html5>
+<html lang="cz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" type="image/x-icon" href="./icons/icon.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="/js/calendar.js" defer></script>
+    <script src="./js/nav.js"></script>
+
+    <title>Kalendář</title>
+  </head>
+  <body>
+    <div class="wraper">
+      <nav>
+        <img src="./icons/test.png" alt="<h3>Logo</h3>" height="90%" />
+        <ul>
+          <li><a href="index.html">domů</a></li>
+          <li><a href="calendar.html">Kalendář</a></li>
+          <li><a href="login.html">Log in</a></li>
+        </ul>
+        <div class="burger">
+          <div id="burger1"></div>
+          <div id="burger2"></div>
+          <div id="burger3"></div>
+        </div>
+      </nav>
+
+      <main>
+        <h2>Kalendář</h2>
+        <table class="calendar">
+          <tr>
+            <th></th>
+            <th class="hours">
+              <p>8:30</p>
+              <p>9:00</p>
+              <p>9:30</p>
+              <p>10:00</p>
+              <p>10:30</p>
+              <p>11:00</p>
+              <p>11:30</p>
+              <p>12:00</p>
+              <p>12:30</p>
+              <p>13:00</p>
+              <p>13:30</p>
+              <p>14:00</p>
+              <p>14:30</p>
+              <p>15:00</p>
+              <p>15:30</p>
+              <p>16:00</p>
+              <p>16:30</p>
+              <p>17:00</p>
+            </th>
+          </tr>
+          <tr class="day">
+            <td><p>Pondělí</p></td>
+            <td id="Monday" class="events"></td>
+          </tr>
+          <tr class="day">
+            <td><p>Úterý</p></td>
+            <td id="Tuesday" class="events"></td>
+          </tr>
+          <tr class="day">
+            <td><p>Středa</p></td>
+            <td id="Wednesday" class="events"></td>
+          </tr>
+          <tr class="day">
+            <td><p>Čtvrtek</p></td>
+            <td id="Thursday" class="events"></td>
+          </tr>
+          <tr class="day">
+            <td><p>Pátek</p></td>
+            <td id="Friday" class="events"></td>
+          </tr>
+        </table>
+      </main>
+    </div>
+  </body>
+</html>
