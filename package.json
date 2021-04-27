@@ -30,8 +30,7 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "serve-favicon": "^2.5.0"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",

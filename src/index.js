@@ -9,9 +9,9 @@ const session = require('express-session');
 const mysql = require('mysql');
 
 let con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "7qGAaj8t3SstjX",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     database: "calendar_todo"
 });
 
@@ -51,7 +51,7 @@ app.use(express.static('./src/public'));
 
 app.use(flash());
 app.use(session({
-    secret: 'secret',
+    secret: process.env.PP_SECRET,
     resave: false,
     saveUninitialized: false
 }));
