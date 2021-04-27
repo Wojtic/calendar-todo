@@ -63,7 +63,8 @@ nav ul li {
           align-items: center;
 }
 
-nav h3 {
+nav h3,
+nav img {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
