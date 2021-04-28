@@ -1,12 +1,11 @@
-require('dotenv').config();
-
 const express = require('express');
-const app = express();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const mysql = require('mysql');
+const app = express();
+require('dotenv').config();
 
 let con = mysql.createConnection({
     host: process.env.DB_HOST,

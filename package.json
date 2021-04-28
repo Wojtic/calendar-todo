@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Wojtic/main_web.git"
+    "url": "git+https://github.com/Wojtic/calendar-todo.git"
   },
   "keywords": [
     "main",
@@ -20,9 +20,9 @@
   "author": "Vojtěch Černý",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Wojtic/main_web/issues"
+    "url": "https://github.com/Wojtic/calendar-todo/issues"
   },
-  "homepage": "https://github.com/Wojtic/main_web#readme",
+  "homepage": "https://github.com/Wojtic/calendar-todo#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
