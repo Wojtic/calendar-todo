@@ -1,0 +1,78 @@
+.calendar {
+  height: auto;
+  width: 80rem;
+  border-collapse: collapse;
+
+  .hours {
+    font-weight: normal;
+    height: 2rem;
+    width: 70rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    p {
+      line-height: 2rem;
+      font-size: smaller;
+    }
+  }
+
+  .day {
+    height: 5rem;
+    font-size: 1.5rem;
+    p {
+      width: 10rem;
+      line-height: 5rem;
+      text-align: center;
+    }
+    .events {
+      position: relative;
+
+      .event {
+        background-color: lightgray;
+        position: absolute;
+        top: 0rem;
+        height: 100%;
+        min-width: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        //Other atributes will be aded to each event
+
+        p {
+          line-height: normal;
+          font-size: 0.7rem;
+          width: auto;
+          color: rgb(99, 99, 99);
+        }
+
+        .theme {
+          font-size: 1.2rem;
+        }
+
+        .theme,
+        h4 {
+          color: rgb(61, 61, 61);
+        }
+
+        .time {
+          line-height: normal;
+          font-size: 0.7rem;
+        }
+
+        h4 {
+          line-height: normal;
+        }
+      }
+    }
+  }
+
+  tr {
+    border: 1px solid black;
+  }
+
+  td:first-child {
+    border-right: 1px solid black;
+  }
+}
