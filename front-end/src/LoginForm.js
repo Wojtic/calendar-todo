@@ -12,6 +12,7 @@ export default class LoginForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log(this.props)
     }
 
     handleChange(e) {
@@ -36,8 +37,26 @@ export default class LoginForm extends Component {
                     onChange={this.handleChange}
                 />
 
-                <button type="submit">Přihlásit se</button>
-                <p>Nemáš účet? <a href="register">Vytvořit účet.</a></p>
+                {this.props.isRegister === true ?
+                    <>
+                        <input
+                            type="password"
+                            name="password_confirm"
+                            placeholder="Zopakuj heslo"
+                            required
+                            minLength="4"
+                            maxLength="20"
+                        />
+                        <button type="submit">Vytvořit účet</button>
+                        <p>Máš účet? <a href="login">Přihlásit se</a></p>
+                    </>
+                    :
+                    <>
+                        <button type="submit">Přihlásit se</button>
+                        <p>Nemáš účet? <a href="register">Vytvořit účet.</a></p>
+                    </>
+                }
+
             </form>
         )
     }

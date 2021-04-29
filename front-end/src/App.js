@@ -7,7 +7,12 @@ export default function App() {
     <Router>
       <Navigation />
       <main>
-        <Route path="/login" component={LoginForm} />
+        <Route path="/login" render={(props) => (
+          <LoginForm {...props} isRegister={false} />
+        )} />
+        <Route path="/register" render={(props) => (
+          <LoginForm {...props} isRegister={true} />
+        )} />
       </main>
     </Router >
   );
