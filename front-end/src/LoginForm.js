@@ -4,10 +4,12 @@ import './styles/css/style.css';
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '', user_name: '' };
+        this.state = { email: '', password: '', user_name: '', password_confirm: '' };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        this.password_input = null;
     }
 
     handleSubmit(e) {
@@ -16,7 +18,16 @@ export default class LoginForm extends Component {
     }
 
     handleChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value }, () => {
+            if (this.props.isRegister) {
+                if (this.state.password !== this.state.password_confirm) {
+                    this.password_input.setCustomValidity("Passwords do not match!")
+                } else {
+                    this.password_input.setCustomValidity("")
+                }
+            }
+
+        });
     }
 
     render() {
@@ -46,6 +57,9 @@ export default class LoginForm extends Component {
                             required
                             minLength="4"
                             maxLength="20"
+                            value={this.state.password_confirm}
+                            onChange={this.handleChange}
+                            ref={element => { this.password_input = element }}
                         />
                         <button type="submit">Vytvořit účet</button>
                         <p>Máš účet? <a href="login">Přihlásit se</a></p>
