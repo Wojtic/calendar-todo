@@ -10,23 +10,26 @@ export default class LoginForm extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.password_input = null;
+        this.red = "#F06450";
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log(this.props)
     }
 
     handleChange(e) {
+        e.target.style.backgroundColor = e.target.checkValidity() ? "inherit" : this.red;
         this.setState({ [e.target.name]: e.target.value }, () => {
             if (this.props.isRegister) {
+                e.target.style.backgroundColor = e.target.checkValidity() ? "inherit" : this.red;
                 if (this.state.password !== this.state.password_confirm) {
-                    this.password_input.setCustomValidity("Passwords do not match!")
+                    this.password_input.setCustomValidity("Passwords do not match!");
+                    this.password_input.style.backgroundColor = this.red;
                 } else {
-                    this.password_input.setCustomValidity("")
+                    this.password_input.setCustomValidity("");
+                    this.password_input.style.backgroundColor = "inherit";
                 }
             }
-
         });
     }
 
@@ -70,7 +73,6 @@ export default class LoginForm extends Component {
                         <p>Nemáš účet? <a href="register">Vytvořit účet.</a></p>
                     </>
                 }
-
             </form>
         )
     }
