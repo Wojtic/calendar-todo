@@ -11,7 +11,7 @@ export default class Navigation extends Component {
                 <ul className={this.state.ulShown ? "nav_active" : null}>
                     <li><a href="index.html">Domů</a></li>
                     <li><a href="calendar.html">Kalendář</a></li>
-                    <li><a href="login.html">Log in</a></li>
+                    <li><a href="login">Log in</a></li>
                 </ul>
                 <div className={`burger ${this.state.ulShown ? "toggle" : null}`} onClick={() => {
                     this.setState({ ulShown: !this.state.ulShown })
