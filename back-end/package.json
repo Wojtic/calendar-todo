@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Wojtic/calendar-todo#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-session": "^1.17.1",

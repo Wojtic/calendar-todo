@@ -2,14 +2,9 @@ nav {
   color: #fff;
   background-color: #335599;
   height: 3.5rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
 nav a {
@@ -17,57 +12,36 @@ nav a {
   height: 100%;
   text-decoration: none;
   color: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a:hover {
   color: #fff;
   background-color: #444444;
-  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 
 nav ul {
   background-color: inherit;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
+  z-index: 100;
 }
 
 nav ul li {
   list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 nav h3,
 nav img {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   padding: 0 5rem;
 }
 
@@ -78,22 +52,13 @@ nav p {
 }
 
 nav .burger {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   height: 3rem;
   width: 4rem;
   display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 nav .burger div {
@@ -101,7 +66,6 @@ nav .burger div {
   height: 8%;
   border-radius: 5px;
   background-color: white;
-  -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
 
@@ -110,21 +74,14 @@ nav .burger div {
     z-index: 1;
   }
   nav ul {
-    -webkit-transition: -webkit-transform 0.5s ease-in;
-    transition: -webkit-transform 0.5s ease-in;
     transition: transform 0.5s ease-in;
-    transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    transform: translateX(100%);
     position: absolute;
     right: 0px;
     top: 3.5rem;
     height: auto;
     width: 50%;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
   nav ul li {
     height: 3.5rem;
@@ -134,21 +91,17 @@ nav .burger div {
     width: 100%;
   }
   nav .burger {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     cursor: pointer;
   }
 }
 
 .nav_active {
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
+  transform: translateX(0%);
 }
 
 .toggle #burger1 {
-  -webkit-transform: rotate(45deg) translate(0.1rem, 0.9rem);
-          transform: rotate(45deg) translate(0.1rem, 0.9rem);
+  transform: rotate(45deg) translate(0.1rem, 0.9rem);
 }
 
 .toggle #burger2 {
@@ -156,8 +109,7 @@ nav .burger div {
 }
 
 .toggle #burger3 {
-  -webkit-transform: rotate(-45deg) translate(0.2rem, -1rem);
-          transform: rotate(-45deg) translate(0.2rem, -1rem);
+  transform: rotate(-45deg) translate(0.2rem, -1rem);
 }
 
 @media screen and (max-width: 600px) {
@@ -176,16 +128,9 @@ nav .burger div {
   font-weight: normal;
   height: 2rem;
   width: 70rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .calendar .hours p {
@@ -214,18 +159,10 @@ nav .burger div {
   top: 0rem;
   height: 100%;
   min-width: 4rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .calendar .day .events .event p {
@@ -263,17 +200,10 @@ nav .burger div {
 
 #register_form,
 #login_form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-shadow: 4px 4px lightblue;
-          box-shadow: 4px 4px lightblue;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 4px 4px lightblue;
   width: 20rem;
   height: 20rem;
   background-color: white;
@@ -294,38 +224,30 @@ nav .burger div {
   height: 10%;
   border: 1px solid darkgray;
   border-radius: 0.5rem;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 #register_form button,
 #login_form button {
   background: none;
   border: 4px solid #335599;
-  -webkit-box-shadow: 4px 4px lightblue;
-          box-shadow: 4px 4px lightblue;
+  box-shadow: 4px 4px lightblue;
   border-radius: 0.5rem;
   font-size: large;
   height: 4rem;
   width: 50%;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 #register_form button:hover,
 #login_form button:hover {
   background-color: #e8f9ff;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 #register_form p,
 #login_form p {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 @media only screen and (max-height: 600px) {
@@ -337,25 +259,15 @@ nav .burger div {
 }
 
 .user {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   height: 9rem;
   width: 7rem;
   border: 4px solid #335599;
   border-radius: 5px;
-  -webkit-box-shadow: 4px 4px lightblue;
-          box-shadow: 4px 4px lightblue;
+  box-shadow: 4px 4px lightblue;
 }
 
 .user a {
@@ -385,28 +297,15 @@ body,
 .wraper {
   height: 100%;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   position: relative;
   color: #000;
   height: 35rem;

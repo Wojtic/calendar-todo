@@ -1,20 +1,36 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import './styles/css/style.css';
 
 export default class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', password: '', user_name: '', password_confirm: '' };
+        this.state = { email: '', password: '', user_name: '', password_confirm: '', redirect: null };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
         this.password_input = null;
+        this.password_input_confirm = null;
         this.red = "#F06450";
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
+        if (this.props.isRegister) {
+
+        } else {
+            let response = await fetch('login', {
+                method: 'POST',
+                body: new URLSearchParams([...new FormData(e.target).entries()])
+            });
+            if (response.status === 200) { this.setState({ redirect: '/' }) }
+            else if (response.status === 401) {
+                this.password_input.style.backgroundColor = this.red;
+                this.setState({ password: '', password_confirm: '' });
+            }
+            else { console.log('HTTP error: ' + response.status); }
+        }
     }
 
     handleChange(e) {
@@ -23,17 +39,20 @@ export default class LoginForm extends Component {
             if (this.props.isRegister) {
                 e.target.style.backgroundColor = e.target.checkValidity() ? "inherit" : this.red;
                 if (this.state.password !== this.state.password_confirm) {
-                    this.password_input.setCustomValidity("Passwords do not match!");
-                    this.password_input.style.backgroundColor = this.red;
+                    this.password_input_confirm.setCustomValidity("Passwords do not match!");
+                    this.password_input_confirm.style.backgroundColor = this.red;
                 } else {
-                    this.password_input.setCustomValidity("");
-                    this.password_input.style.backgroundColor = "inherit";
+                    this.password_input_confirm.setCustomValidity("");
+                    this.password_input_confirm.style.backgroundColor = "inherit";
                 }
             }
         });
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <form action="#" id="login_form" onSubmit={this.handleSubmit}>
                 <label htmlFor="email">Email:</label>
@@ -49,6 +68,7 @@ export default class LoginForm extends Component {
                     maxLength="20"
                     value={this.state.password}
                     onChange={this.handleChange}
+                    ref={element => { this.password_input = element }}
                 />
 
                 {this.props.isRegister === true ?
@@ -62,7 +82,7 @@ export default class LoginForm extends Component {
                             maxLength="20"
                             value={this.state.password_confirm}
                             onChange={this.handleChange}
-                            ref={element => { this.password_input = element }}
+                            ref={element => { this.password_input_confirm = element }}
                         />
                         <button type="submit">Vytvořit účet</button>
                         <p>Máš účet? <a href="login">Přihlásit se</a></p>

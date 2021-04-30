@@ -45,7 +45,7 @@ initializePassport(
 
 app.use(express.urlencoded({ extended: false }));
 
-app.listen(3000, () => console.log('Listening at 3000'));
+app.listen(3080, () => console.log('Listening at 3080'));
 app.use(express.static('./src/public'));
 
 app.use(flash());
@@ -57,12 +57,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: 'login.html',
-    failureFlash: true
-}));
+app.post('/login', passport.authenticate('local'), (req, res) => {
+    if (req.user || req.session.user) {
+        return res.send("Login succeeded");
+    }
+    return res.status(401);
+});
 
 app.post('/register', (req, res) => {
     con.query(`SELECT * FROM users WHERE email='${req.body.email}'`, async (err, result) => {
