@@ -77,9 +77,9 @@ app.post('/register', (req, res) => {
                 con.query(sql, (err, result) => {
                     if (err) throw err;
                 });
-                res.redirect('login.html');
+                res.send("Register succeeded");
             } catch {
-                res.redirect('register.html');
+                res.sendStatus(500);
             }
         }
     });
