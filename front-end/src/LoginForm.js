@@ -19,6 +19,10 @@ export default class LoginForm extends Component {
     static contextType = UserContext;
 
     async handleSubmit(e) {
+        const [user, setUser] = this.context;
+        if (user.user_name != null) {
+            this.setState({ redirect: '/' });
+        }
         e.preventDefault();
         if (this.props.isRegister) {
             let response = await fetch('register', {
@@ -43,11 +47,9 @@ export default class LoginForm extends Component {
                 body: new URLSearchParams([...new FormData(e.target).entries()])
             });
             if (response.status === 200) {
-                const [user, setUser] = this.context;
                 response = await response.json();
                 setUser({ user_name: response.user_name });
-
-                this.setState({ redirect: '/' })
+                this.setState({ redirect: '/' });
             }
             else if (response.status === 401) {
                 this.password_input.style.backgroundColor = this.red;
