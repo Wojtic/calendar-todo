@@ -97,14 +97,3 @@ app.get('/delete_account', (req, res) => {
         res.redirect('/');
     });
 });
-
-app.post('/check_user', async (req, res) => {
-    if (req.user) {
-        res.send({
-            loggedIn: true,
-            username: req.user.username
-        });
-    } else {
-        res.send({ loggedIn: false });
-    }
-});
