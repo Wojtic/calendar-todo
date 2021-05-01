@@ -59,7 +59,7 @@ app.use(passport.session());
 
 app.post('/login', passport.authenticate('local'), (req, res) => {
     if (req.user || req.session.user) {
-        return res.send("Login succeeded");
+        return res.json({ user_name: req.user.username });
     }
     return res.status(401);
 });

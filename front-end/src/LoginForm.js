@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { UserContext } from './UserContext';
 import { Redirect, Link } from 'react-router-dom';
 import './styles/css/style.css';
 
@@ -14,6 +15,8 @@ export default class LoginForm extends Component {
         this.password_input_confirm = null;
         this.red = "#F06450";
     }
+
+    static contextType = UserContext;
 
     async handleSubmit(e) {
         e.preventDefault();
@@ -39,7 +42,13 @@ export default class LoginForm extends Component {
                 method: 'POST',
                 body: new URLSearchParams([...new FormData(e.target).entries()])
             });
-            if (response.status === 200) { this.setState({ redirect: '/' }) }
+            if (response.status === 200) {
+                const [user, setUser] = this.context;
+                response = await response.json();
+                setUser({ user_name: response.user_name });
+
+                this.setState({ redirect: '/' })
+            }
             else if (response.status === 401) {
                 this.password_input.style.backgroundColor = this.red;
                 this.setState({ password: '', password_confirm: '' });
