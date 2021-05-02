@@ -1,15 +1,11 @@
 .calendar {
-  height: auto;
-  width: 80rem;
+  @include width-height(80rem, auto);
   border-collapse: collapse;
 
   .hours {
+    @include width-height(70rem, 2rem);
+    @include flex-center(row, space-between);
     font-weight: normal;
-    height: 2rem;
-    width: 70rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 
     p {
       line-height: 2rem;
@@ -29,16 +25,11 @@
       position: relative;
 
       .event {
+        @include absolute-position(0rem);
+        @include flex-center(column, space-around);
         background-color: lightgray;
-        position: absolute;
-        top: 0rem;
         height: 100%;
         min-width: 4rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        //Other atributes will be aded to each event
 
         p {
           line-height: normal;

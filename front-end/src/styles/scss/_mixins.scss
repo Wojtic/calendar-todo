@@ -1,0 +1,19 @@
+@mixin flex-center($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin absolute-position($top, $right: auto, $botton: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $botton;
+  left: $left;
+}

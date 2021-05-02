@@ -1,6 +1,6 @@
 nav {
   color: $text-nav;
-  background-color: $nav;
+  background-color: $main;
   height: 3.5rem;
   display: flex;
   justify-content: space-between;
@@ -11,10 +11,7 @@ nav {
     height: 100%;
     text-decoration: none;
     color: inherit;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @include flex-center(row, center);
 
     &:hover {
       color: $nav-hover-text;
@@ -31,10 +28,7 @@ nav {
 
     li {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+      @include flex-center(column, space-around);
     }
   }
 
@@ -52,17 +46,12 @@ nav {
 
   .burger {
     align-self: center;
-    height: 3rem;
-    width: 4rem;
+    @include width-height(4rem, 3rem);
+    @include flex-center(column, space-evenly);
     display: none;
-    flex-direction: column;
-
-    justify-content: space-evenly;
-    align-items: center;
 
     div {
-      width: 70%;
-      height: 8%;
+      @include width-height(70%, 8%);
       border-radius: 5px;
       background-color: white;
       transition: all 0.3s ease-in;
@@ -74,11 +63,8 @@ nav {
     ul {
       transition: transform 0.5s ease-in;
       transform: translateX(100%);
-      position: absolute;
-      right: 0px;
-      top: 3.5rem;
-      height: auto;
-      width: 50%;
+      @include absolute-position(3.5rem, 0);
+      @include width-height(50%, auto);
 
       flex-direction: column;
 
@@ -103,20 +89,16 @@ nav {
   transform: translateX(0%);
 }
 
-.toggle #burger1 {
-  transform: rotate(45deg) translate(0.1rem, 0.9rem);
-}
+.toggle {
+  #burger1 {
+    transform: rotate(45deg) translate(0.1rem, 0.9rem);
+  }
 
-.toggle #burger2 {
-  opacity: 0;
-}
+  #burger2 {
+    opacity: 0;
+  }
 
-.toggle #burger3 {
-  transform: rotate(-45deg) translate(0.2rem, -1rem);
-}
-
-@media screen and (max-width: 600px) {
-  .wraper {
-    overflow-x: hidden;
+  #burger3 {
+    transform: rotate(-45deg) translate(0.2rem, -1rem);
   }
 }

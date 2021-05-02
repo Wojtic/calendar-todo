@@ -35,8 +35,8 @@ nav ul li {
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 }
 
 nav h3,
@@ -53,12 +53,13 @@ nav p {
 
 nav .burger {
   align-self: center;
-  height: 3rem;
   width: 4rem;
-  display: none;
+  height: 3rem;
+  display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: space-evenly;
+  display: none;
 }
 
 nav .burger div {
@@ -77,10 +78,12 @@ nav .burger div {
     transition: transform 0.5s ease-in;
     transform: translateX(100%);
     position: absolute;
-    right: 0px;
     top: 3.5rem;
-    height: auto;
+    right: 0;
+    bottom: auto;
+    left: auto;
     width: 50%;
+    height: auto;
     flex-direction: column;
   }
   nav ul li {
@@ -112,25 +115,20 @@ nav .burger div {
   transform: rotate(-45deg) translate(0.2rem, -1rem);
 }
 
-@media screen and (max-width: 600px) {
-  .wraper {
-    overflow-x: hidden;
-  }
-}
-
 .calendar {
-  height: auto;
   width: 80rem;
+  height: auto;
   border-collapse: collapse;
 }
 
 .calendar .hours {
-  font-weight: normal;
-  height: 2rem;
   width: 70rem;
+  height: 2rem;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  font-weight: normal;
 }
 
 .calendar .hours p {
@@ -154,15 +152,18 @@ nav .burger div {
 }
 
 .calendar .day .events .event {
-  background-color: lightgray;
   position: absolute;
   top: 0rem;
-  height: 100%;
-  min-width: 4rem;
+  right: auto;
+  bottom: auto;
+  left: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  background-color: lightgray;
+  height: 100%;
+  min-width: 4rem;
 }
 
 .calendar .day .events .event p {
@@ -234,14 +235,14 @@ nav .burger div {
   box-shadow: 4px 4px lightblue;
   border-radius: 0.5rem;
   font-size: large;
-  height: 4rem;
   width: 50%;
+  height: 4rem;
   align-self: center;
 }
 
 #register_form button:hover,
 #login_form button:hover {
-  background-color: #e8f9ff;
+  background-color: lightblue;
   transition: 0.5s;
 }
 
@@ -250,21 +251,13 @@ nav .burger div {
   align-self: center;
 }
 
-@media only screen and (max-height: 600px) {
-  #register_form,
-  #login_form {
-    position: absolute;
-    top: 1rem;
-  }
-}
-
 .user {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  height: 9rem;
+  justify-content: space-evenly;
   width: 7rem;
+  height: 9rem;
   border: 4px solid #335599;
   border-radius: 5px;
   box-shadow: 4px 4px lightblue;
@@ -299,18 +292,19 @@ body,
   position: relative;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 main {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: fit-content;
+  flex-grow: 1;
   position: relative;
   color: #000;
-  height: fit-content;
-  width: 100%;
   margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

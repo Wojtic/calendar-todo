@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  box-shadow: 4px 4px lightblue;
+  box-shadow: 4px 4px $main-light;
 
-  width: 20rem;
-  height: 20rem;
+  @include width-height(20rem, 20rem);
+
   background-color: white;
 
-  border: 2px solid $nav;
+  border: 2px solid $main;
   border-radius: 1rem;
 
   padding: 1rem 1rem;
@@ -19,8 +19,7 @@
 
   input {
     font-size: large;
-    width: 20rem;
-    height: 10%;
+    @include width-height(20rem, 10%);
     border: 1px solid darkgray;
     border-radius: 0.5rem;
     align-self: center;
@@ -28,26 +27,20 @@
 
   button {
     background: none;
-    border: 4px solid $nav;
-    box-shadow: 4px 4px lightblue;
+    border: 4px solid $main;
+    box-shadow: 4px 4px $main-light;
     border-radius: 0.5rem;
     font-size: large;
-    height: 4rem;
-    width: 50%;
+    @include width-height(50%, 4rem);
     align-self: center;
 
     &:hover {
-      background-color: rgb(232, 249, 255);
+      background-color: $main-light;
       transition: 0.5s;
     }
   }
 
   p {
     align-self: center;
-  }
-
-  @media only screen and (max-height: 600px) {
-    position: absolute;
-    top: 1rem;
   }
 }
