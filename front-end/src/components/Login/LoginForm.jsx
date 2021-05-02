@@ -15,7 +15,7 @@ const LoginForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== passwordConfirm) {
+    if (password !== passwordConfirm && props.isRegister) {
       return alert("Passwords do not match!");
     }
     if (user.user_name != null) {
