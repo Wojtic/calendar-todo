@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { UserContext } from './UserContext'
+import { UserContext } from '../contexts/UserContext'
 import { NavLink } from 'react-router-dom';
 import './styles/css/style.css';
 

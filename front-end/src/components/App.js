@@ -1,10 +1,10 @@
 import React from 'react';
-import Navigation from './Navigation';
-import LoginForm from './LoginForm';
-import Home from './Home';
-import Calendar from './Calendar';
+import Navigation from './Navigation/Navigation';
+import LoginForm from './Login/LoginForm';
+import Home from './Home/Home';
+import Calendar from './Calendar/Calendar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { UserProvider } from './UserContext';
+import { UserProvider } from './contexts/UserContext';
 
 
 export default function App() {
