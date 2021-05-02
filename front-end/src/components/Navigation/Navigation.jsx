@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/UserContext.jsx";
 import { NavLink } from "react-router-dom";
 import "../../styles/css/style.css";
 
-export default function Navigation() {
+const Navigation = () => {
   const [ulShown, setUlShown] = useState(false);
   const [user] = useContext(UserContext);
 
@@ -56,4 +56,6 @@ export default function Navigation() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navigation;
