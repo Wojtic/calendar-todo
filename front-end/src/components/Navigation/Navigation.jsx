@@ -23,6 +23,15 @@ const Navigation = () => {
         <li>
           <NavLink
             activeStyle={{ textShadow: "0px 0px 1px white" }}
+            to="/todo"
+            exact
+          >
+            Todo
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            activeStyle={{ textShadow: "0px 0px 1px white" }}
             to="calendar"
           >
             Kalendář
