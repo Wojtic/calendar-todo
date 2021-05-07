@@ -3,7 +3,7 @@ import Navigation from "./Navigation/Navigation.jsx";
 import LoginForm from "./Login/LoginForm.jsx";
 import Home from "./Home/Home.jsx";
 import Calendar from "./Calendar/Calendar.jsx";
-import Todo from "./Todo/Todo.jsx";
+import Todo from "./Todo/TodoList.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext.jsx";
 
