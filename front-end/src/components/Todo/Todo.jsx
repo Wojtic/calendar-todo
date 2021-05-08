@@ -12,7 +12,7 @@ const Todo = (props) => {
       />
       <p>{props.task}</p>
       <i className="fa fa-trash fa-lg"></i>
-      <i class="fa fa-ellipsis-v fa-lg"></i>
+      <i className="fa fa-ellipsis-v fa-lg"></i>
     </div>
   );
 };

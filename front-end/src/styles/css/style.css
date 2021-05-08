@@ -275,6 +275,58 @@ nav .burger div {
   font-size: small;
 }
 
+.todo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 50rem;
+  height: 2rem;
+  background-color: lightblue;
+  border: 2px dotted #335599;
+  cursor: pointer;
+}
+
+.todo * {
+  cursor: pointer;
+}
+
+.todo p {
+  flex-grow: 1;
+}
+
+.todo input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0.5rem;
+}
+
+.todo .fa-trash {
+  width: 1rem;
+  height: 100%;
+  line-height: 2rem;
+  padding: 0 0.5rem;
+  color: #ff6b6b;
+}
+
+.todo .fa-trash:hover {
+  color: #ffa3a3;
+  transition: color 0.3s;
+}
+
+.todo .fa-ellipsis-v {
+  width: 0.5rem;
+  height: 100%;
+  line-height: 2rem;
+  padding: 0 0.2rem;
+  color: white;
+}
+
+.todo .fa-ellipsis-v:hover {
+  color: #666666;
+  transition: color 0.3s;
+}
+
 * {
   margin: 0;
   padding: 0;
