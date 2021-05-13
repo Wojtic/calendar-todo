@@ -10,7 +10,8 @@ const Todo = (props) => {
         defaultChecked={checked}
         onClick={() => setChecked(!checked)}
       />
-      <p>{props.task}</p>
+      <p className="time">{props.time}</p>
+      <p className="task">{props.task}</p>
       <i className="fa fa-trash fa-lg"></i>
       <i className="fa fa-ellipsis-v fa-lg"></i>
     </div>

@@ -280,7 +280,7 @@ nav .burger div {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 50rem;
+  width: 70%;
   height: 2rem;
   background-color: lightblue;
   border: 2px dotted #335599;
@@ -291,7 +291,12 @@ nav .burger div {
   cursor: pointer;
 }
 
-.todo p {
+.todo .time {
+  width: 3.5rem;
+  color: #5f5f5f;
+}
+
+.todo .task {
   flex-grow: 1;
 }
 

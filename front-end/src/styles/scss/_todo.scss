@@ -1,6 +1,6 @@
 .todo {
   @include flex-center(row, center);
-  @include width-height(50rem, 2rem);
+  @include width-height(70%, 2rem);
 
   background-color: $main-light;
   border: 2px dotted $main;
@@ -9,7 +9,13 @@
   * {
     cursor: pointer;
   }
-  p {
+
+  .time {
+    width: 3.5rem;
+    color: rgb(95, 95, 95);
+  }
+
+  .task {
     flex-grow: 1;
   }
 
