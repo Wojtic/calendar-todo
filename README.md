@@ -1,6 +1,6 @@
-# Project Title
+# Calendar-Todo (looking for better name)
 
-A brief description of what this project does and who it's for
+Web aplication for calendar (more like time table) and to-do lists
 
 ## API Reference
 
@@ -52,7 +52,7 @@ A brief description of what this project does and who it's for
 #### Create new task
 
 ```http
-  GET /create_task
+  POST /create_task
 ```
 
 | Parameter     | Description                                                                      |
