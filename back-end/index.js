@@ -23,7 +23,6 @@ con.connect((err) => {
 });
 
 const initializePassport = require("./passport-config");
-const { response } = require("express");
 initializePassport(
   passport,
   (email, callback) => {
@@ -61,6 +60,22 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
+const getGroups = (user, callback) => {
+  let query = `SELECT * FROM user_to_group WHERE user_id='${user}'`;
+  con.query(query, (err, result) => {
+    if (err) callback(err, null);
+    if (result[0]) {
+      result = JSON.parse(JSON.stringify(result));
+      callback(
+        null,
+        result.map((elem) => elem["group_name"])
+      );
+    } else {
+      callback(null, []);
+    }
+  });
+};
 
 app.post("/login", passport.authenticate("local"), (req, res) => {
   if (req.user || req.session.user) {
@@ -128,7 +143,6 @@ app.post("/create_task", jsonParser, (req, res) => {
             ? `'${req.body.owner}'`
             : req.user.id
         })`;
-        console.log(queryString);
         con.query(queryString, (err, response) => {
           if (err) throw err;
           else res.sendStatus(200);
@@ -137,5 +151,28 @@ app.post("/create_task", jsonParser, (req, res) => {
     });
   } else {
     res.sendStatus(401);
+  }
+});
+
+app.get("/get_tasks", (req, res) => {
+  if (req.user || req.session.user) {
+    // select all tasks with user id
+    let query = `SELECT * FROM task_to_owner WHERE user_id=${req.user.id}`;
+    con.query(query, (err, result) => {
+      if (err) throw err;
+      console.log(result);
+    });
+    // select all tasks with groups the user is part of
+  } else {
+    res.sendStatus(401);
+  }
+});
+
+app.get("/get_groups", (req, res) => {
+  if (req.user.id || req.session.user.id) {
+    getGroups(req.user.id, (err, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   }
 });

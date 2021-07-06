@@ -47,6 +47,12 @@ Web aplication for calendar (more like time table) and to-do lists
   GET /delete_account
 ```
 
+#### Get all groups user is part of
+
+```http
+  GET /get_groups
+```
+
 ### Task manipulation
 
 #### Create new task
@@ -61,3 +67,11 @@ Web aplication for calendar (more like time table) and to-do lists
 | `name`        | **Required**. Name of the task                                                   |
 | `date`        | **Required**. Date since the task is                                             |
 | `description` | Description of the task                                                          |
+
+#### Get all tasks for user
+
+Including all groups the user is part of.
+
+```http
+  GET /get_tasks
+```
