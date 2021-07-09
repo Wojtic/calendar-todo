@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 
-const Todo = (props) => {
+interface TodoProps {
+  checked: boolean;
+  time: string;
+  task: string;
+}
+
+const Todo: FC<TodoProps> = (props) => {
   const [checked, setChecked] = useState(props.checked);
   return (
     <div className="todo">

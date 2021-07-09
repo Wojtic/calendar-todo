@@ -1,11 +1,11 @@
 import React from "react";
-import Navigation from "./Navigation/Navigation.jsx";
-import LoginForm from "./Login/LoginForm.jsx";
-import Home from "./Home/Home.jsx";
-import Calendar from "./Calendar/Calendar.jsx";
-import Todo from "./Todo/TodoList.jsx";
+import Navigation from "./Navigation/Navigation";
+import LoginForm from "./Login/LoginForm";
+import Home from "./Home/Home";
+import Calendar from "./Calendar/Calendar";
+import Todo from "./Todo/TodoList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { UserProvider } from "./contexts/UserContext.jsx";
+import { UserProvider } from "./contexts/UserContext";
 
 export default function App() {
   return (

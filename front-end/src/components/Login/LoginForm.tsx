@@ -1,9 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FC } from "react";
 import { UserContext } from "../contexts/UserContext.jsx";
 import { Redirect, Link } from "react-router-dom";
 import "../../styles/css/style.css";
 
-const LoginForm = (props) => {
+interface LoginProps {
+  isRegister: boolean;
+}
+const LoginForm: FC<LoginProps> = (props) => {
   const [user, setUser] = useContext(UserContext);
   const red = "#F06450";
 
@@ -13,7 +16,7 @@ const LoginForm = (props) => {
   const [email, setEmail] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: Event) => {
     e.preventDefault();
     if (password !== passwordConfirm && props.isRegister) {
       return alert("Passwords do not match!");
@@ -75,8 +78,8 @@ const LoginForm = (props) => {
             name="username"
             placeholder="Napiš přezdívku"
             required
-            minLength="2"
-            maxLength="10"
+            minLength={2}
+            maxLength={10}
             value={userName}
             onChange={(e) => {
               setUserName(e.target.value);
@@ -104,8 +107,8 @@ const LoginForm = (props) => {
         name="password"
         placeholder="Napiš heslo"
         required
-        minLength="4"
-        maxLength="20"
+        minLength={4}
+        maxLength={20}
         value={password}
         onChange={(e) => {
           handleChange(e);
@@ -120,8 +123,8 @@ const LoginForm = (props) => {
             name="password_confirm"
             placeholder="Zopakuj heslo"
             required
-            minLength="4"
-            maxLength="20"
+            minLength={4}
+            maxLength={20}
             value={passwordConfirm}
             onChange={(e) => {
               handleChange(e);

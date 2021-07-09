@@ -1,16 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, FC } from "react";
 import { UserContext } from "../contexts/UserContext.jsx";
 import { NavLink } from "react-router-dom";
 import "../../styles/css/style.css";
 
-const Navigation = () => {
+const Navigation: FC = () => {
   const [ulShown, setUlShown] = useState(false);
-  const [user] = useContext(UserContext);
+  const [user]: any = useContext(UserContext);
 
   return (
     <nav>
       <img src="./icons/test.png" alt="<h3>Logo</h3>" height="90%" />
-      <ul className={ulShown ? "nav_active" : null}>
+      <ul className={ulShown ? "nav_active" : undefined}>
         <li>
           <NavLink
             activeStyle={{ textShadow: "0px 0px 1px white" }}
