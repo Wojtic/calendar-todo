@@ -20,9 +20,14 @@ const LoginForm = (props) => {
             setRedirect("/");
         }
         if (props.isRegister) {
+            let body = new URLSearchParams();
+            body.append("username", user_name);
+            body.append("email", email);
+            body.append("password", password);
             let response = await fetch("register", {
                 method: "POST",
-                body: new FormData(e.currentTarget),
+                headers: { "Content-type": "application/x-www-form-urlencoded" },
+                body: body,
             });
             if (response.status === 200) {
                 try {
@@ -40,6 +45,7 @@ const LoginForm = (props) => {
                 catch (e) { }
             }
             else {
+                // always wiht proxy
                 console.log("HTTP error: " + response.status);
             }
         }
