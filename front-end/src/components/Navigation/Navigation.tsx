@@ -1,11 +1,12 @@
-import React, { useState, FC } from "react";
-import { useUser } from "../contexts/UserContext.jsx";
+import React, { useState, useContext, FC } from "react";
+import { UserNameContext } from "../contexts/UserContext";
 import { NavLink } from "react-router-dom";
 import "../../styles/css/style.css";
 
 const Navigation: FC = () => {
   const [ulShown, setUlShown] = useState(false);
-  const [userName, setUserName]: any = useUser();
+  // eslint-disable-next-line
+  const { userName, setUserName }: any = useContext(UserNameContext);
 
   return (
     <nav>

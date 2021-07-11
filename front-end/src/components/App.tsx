@@ -5,14 +5,14 @@ import Home from "./Home/Home";
 import Calendar from "./Calendar/Calendar";
 import Todo from "./Todo/TodoList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { UserContext } from "./contexts/UserContext";
+import { UserNameContext } from "./contexts/UserContext";
 
 export default function App() {
   const [userName, setUserName] = React.useState(null);
 
   return (
     <Router>
-      <UserContext.Provider value={{ userName, setUserName }}>
+      <UserNameContext.Provider value={{ userName, setUserName }}>
         <Navigation />
         <main>
           <Switch>
@@ -29,7 +29,7 @@ export default function App() {
             <Route path="/todo" exact component={Todo} />
           </Switch>
         </main>
-      </UserContext.Provider>
+      </UserNameContext.Provider>
     </Router>
   );
 }

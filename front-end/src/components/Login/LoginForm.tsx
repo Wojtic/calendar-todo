@@ -1,5 +1,5 @@
-import React, { useState, FC } from "react";
-import { useUser } from "../contexts/UserContext.jsx";
+import React, { useState, useContext, FC } from "react";
+import { UserNameContext } from "../contexts/UserContext";
 import { Redirect, Link } from "react-router-dom";
 import "../../styles/css/style.css";
 
@@ -7,7 +7,7 @@ interface LoginProps {
   isRegister: boolean;
 }
 const LoginForm: FC<LoginProps> = (props) => {
-  const [userName, setUserName]: any = useUser();
+  const { userName, setUserName }: any = useContext(UserNameContext);
   const red = "#F06450";
 
   const [redirect, setRedirect] = useState(null);
@@ -27,12 +27,12 @@ const LoginForm: FC<LoginProps> = (props) => {
     if (props.isRegister) {
       let response = await fetch("register", {
         method: "POST",
-        body: new URLSearchParams([...new FormData(e.currentTarget).entries()]),
+        body: new FormData(e.currentTarget),
       });
       if (response.status === 200) {
         try {
-          response = await response.json();
-          if (response.userExists) {
+          const json_res: { userExists: boolean } = await response.json();
+          if (json_res.userExists) {
             alert("Uživatel s tímto emailem už existuje.");
             setEmail("");
             setPassword("");
@@ -45,9 +45,13 @@ const LoginForm: FC<LoginProps> = (props) => {
         console.log("HTTP error: " + response.status);
       }
     } else {
+      let body = new URLSearchParams();
+      body.append("email", email);
+      body.append("password", password);
       let response = await fetch("login", {
         method: "POST",
-        body: new URLSearchParams([...new FormData(e.target).entries()]),
+        headers: { "Content-type": "application/x-www-form-urlencoded" },
+        body: body,
       });
       if (response.status === 200) {
         const json_res: { user_name: string } = await response.json();

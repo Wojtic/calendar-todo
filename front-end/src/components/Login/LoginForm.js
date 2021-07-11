@@ -1,26 +1,17 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { useState } from "react";
-import { useUser } from "../contexts/UserContext.jsx";
+import { useState, useContext } from "react";
+import { UserNameContext } from "../contexts/UserContext";
 import { Redirect, Link } from "react-router-dom";
 import "../../styles/css/style.css";
 const LoginForm = (props) => {
-    const [userName, setUserName] = useUser();
+    const { userName, setUserName } = useContext(UserNameContext);
     const red = "#F06450";
     const [redirect, setRedirect] = useState(null);
     const [user_name, set_user_name] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
-    const handleSubmit = (e) => __awaiter(void 0, void 0, void 0, function* () {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== passwordConfirm && props.isRegister) {
             return alert("Passwords do not match!");
@@ -29,14 +20,14 @@ const LoginForm = (props) => {
             setRedirect("/");
         }
         if (props.isRegister) {
-            let response = yield fetch("register", {
+            let response = await fetch("register", {
                 method: "POST",
-                body: new URLSearchParams([...new FormData(e.currentTarget).entries()]),
+                body: new FormData(e.currentTarget),
             });
             if (response.status === 200) {
                 try {
-                    response = yield response.json();
-                    if (response.userExists) {
+                    const json_res = await response.json();
+                    if (json_res.userExists) {
                         alert("Uživatel s tímto emailem už existuje.");
                         setEmail("");
                         setPassword("");
@@ -53,12 +44,16 @@ const LoginForm = (props) => {
             }
         }
         else {
-            let response = yield fetch("login", {
+            let body = new URLSearchParams();
+            body.append("email", email);
+            body.append("password", password);
+            let response = await fetch("login", {
                 method: "POST",
-                body: new URLSearchParams([...new FormData(e.target).entries()]),
+                headers: { "Content-type": "application/x-www-form-urlencoded" },
+                body: body,
             });
             if (response.status === 200) {
-                const json_res = yield response.json();
+                const json_res = await response.json();
                 setUserName(json_res.user_name);
                 setRedirect("/");
             }
@@ -69,7 +64,7 @@ const LoginForm = (props) => {
                 console.log("HTTP error: " + response.status);
             }
         }
-    });
+    };
     const handleChange = (e) => {
         e.target.style.backgroundColor = e.target.checkValidity() ? "unset" : red;
     };

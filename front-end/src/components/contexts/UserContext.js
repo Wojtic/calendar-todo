@@ -1,6 +1,5 @@
-import { useContext, createContext } from "react";
-export const UserContext = createContext({
+import { createContext } from "react";
+export const UserNameContext = createContext({
     userName: null,
     setUserName: (name) => console.warn("No user name provided"),
 });
-export const useUser = () => useContext(UserContext);

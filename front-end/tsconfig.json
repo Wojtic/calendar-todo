@@ -1,15 +1,32 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "esnext",
     "watch": true,
     "strict": false,
     "downlevelIteration": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "removeComments": true,
-    "lib": ["DOM", "ES2021", "DOM.Iterable"]
+    "removeComments": false,
+    "lib": [
+      "DOM",
+      "ES2021",
+      "DOM.Iterable"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
-  "include": ["src/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
