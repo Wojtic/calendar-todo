@@ -1,11 +1,11 @@
-import React, { useState, useContext, FC } from "react";
-import { UserContext } from "../contexts/UserContext.jsx";
+import React, { useState, FC } from "react";
+import { useUser } from "../contexts/UserContext.jsx";
 import { NavLink } from "react-router-dom";
 import "../../styles/css/style.css";
 
 const Navigation: FC = () => {
   const [ulShown, setUlShown] = useState(false);
-  const [user]: any = useContext(UserContext);
+  const [userName, setUserName]: any = useUser();
 
   return (
     <nav>
@@ -37,7 +37,7 @@ const Navigation: FC = () => {
             Kalendář
           </NavLink>
         </li>
-        {user.user_name == null ? (
+        {userName == null ? (
           <li>
             <NavLink
               activeStyle={{ textShadow: "0px 0px 1px white" }}
@@ -49,7 +49,7 @@ const Navigation: FC = () => {
         ) : (
           <li>
             <i className="fa fa-user-circle fa-2x"></i>
-            <p>{user.user_name}</p>
+            <p>{userName}</p>
           </li>
         )}
       </ul>

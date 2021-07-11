@@ -1,13 +1,13 @@
-import React, { useState, createContext, FC } from "react";
+import { useContext, createContext } from "react";
 
-export const UserContext = createContext({user_name: null});
-
-export const UserProvider: FC = (props) => {
-  const [user, setUser] = useState({ user_name: null });
-
-  return (
-    <UserContext.Provider value={[user, setUser]}>
-      {props.children}
-    </UserContext.Provider>
-  );
+export type UserContextType = {
+  userName: string;
+  setUserName: (userName: string) => void;
 };
+
+export const UserContext = createContext<UserContextType>({
+  userName: null,
+  setUserName: (name) => console.warn("No user name provided"),
+});
+
+export const useUser = () => useContext(UserContext);

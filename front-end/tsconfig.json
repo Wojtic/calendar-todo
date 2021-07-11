@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES6",
     "watch": true,
-    "strict": true,
+    "strict": false,
+    "downlevelIteration": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "removeComments": true,
-    "lib": ["DOM", "ES2021"]
+    "lib": ["DOM", "ES2021", "DOM.Iterable"]
   },
   "include": ["src/*"],
   "exclude": ["node_modules"]

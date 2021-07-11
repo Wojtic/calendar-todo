@@ -1,5 +1,5 @@
-import React, { useState, useContext, FC } from "react";
-import { UserContext } from "../contexts/UserContext.jsx";
+import React, { useState, FC } from "react";
+import { useUser } from "../contexts/UserContext.jsx";
 import { Redirect, Link } from "react-router-dom";
 import "../../styles/css/style.css";
 
@@ -7,27 +7,27 @@ interface LoginProps {
   isRegister: boolean;
 }
 const LoginForm: FC<LoginProps> = (props) => {
-  const [user, setUser] = useContext(UserContext);
+  const [userName, setUserName]: any = useUser();
   const red = "#F06450";
 
   const [redirect, setRedirect] = useState(null);
-  const [userName, setUserName] = useState("");
+  const [user_name, set_user_name] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const handleSubmit = async (e: Event) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== passwordConfirm && props.isRegister) {
       return alert("Passwords do not match!");
     }
-    if (user.user_name != null) {
+    if (userName != null) {
       setRedirect("/");
     }
     if (props.isRegister) {
       let response = await fetch("register", {
         method: "POST",
-        body: new URLSearchParams([...new FormData(e.target).entries()]),
+        body: new URLSearchParams([...new FormData(e.currentTarget).entries()]),
       });
       if (response.status === 200) {
         try {
@@ -50,8 +50,8 @@ const LoginForm: FC<LoginProps> = (props) => {
         body: new URLSearchParams([...new FormData(e.target).entries()]),
       });
       if (response.status === 200) {
-        response = await response.json();
-        setUser({ user_name: response.user_name });
+        const json_res: { user_name: string } = await response.json();
+        setUserName(json_res.user_name);
         setRedirect("/");
       } else if (response.status === 401) {
         setPassword("");
@@ -80,9 +80,9 @@ const LoginForm: FC<LoginProps> = (props) => {
             required
             minLength={2}
             maxLength={10}
-            value={userName}
+            value={user_name}
             onChange={(e) => {
-              setUserName(e.target.value);
+              set_user_name(e.target.value);
               handleChange(e);
             }}
           />
