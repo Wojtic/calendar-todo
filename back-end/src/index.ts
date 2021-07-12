@@ -77,6 +77,15 @@ const getGroups = (user, callback) => {
   });
 };
 
+const checkAuth = (req, res) => {
+  if (req.hasOwnProperty("user")) {
+    return true;
+  } else {
+    res.sendStatus(401);
+    return false;
+  }
+};
+
 app.post("/login", passport.authenticate("local"), (req, res) => {
   if (req.user || req.session.user) {
     return res.json({ user_name: req.user.username });
@@ -114,6 +123,7 @@ app.get("/log_out", (req, res) => {
 });
 
 app.get("/delete_account", (req, res) => {
+  if (!checkAuth(req, res)) return;
   con.query(`DELETE FROM users WHERE id='${req.user.id}'`, (err, response) => {
     if (err) throw err;
     req.logOut();
@@ -124,7 +134,7 @@ app.get("/delete_account", (req, res) => {
 app.post("/create_task", jsonParser, (req, res) => {
   if (!(req.body.name && req.body.date && req.body.owner)) {
     res.sendStatus(400);
-  } else if (req.user || req.session.user) {
+  } else if (checkAuth(req, res)) {
     let queryString = `INSERT INTO tasks (task_name, task_description, task_date) VALUES ('${
       req.body.name
     }', '${req.body.description || ""}', '${req.body.date}')`;
@@ -149,30 +159,24 @@ app.post("/create_task", jsonParser, (req, res) => {
         });
       });
     });
-  } else {
-    res.sendStatus(401);
   }
 });
 
 app.get("/get_tasks", (req, res) => {
-  if (req.user || req.session.user) {
-    // select all tasks with user id
-    let query = `SELECT * FROM task_to_owner WHERE user_id=${req.user.id}`;
-    con.query(query, (err, result) => {
-      if (err) throw err;
-      console.log(result);
-    });
-    // select all tasks with groups the user is part of
-  } else {
-    res.sendStatus(401);
-  }
+  if (!checkAuth(req, res)) return;
+  // select all tasks with user id
+  let query = `SELECT * FROM task_to_owner WHERE user_id=${req.user.id}`;
+  con.query(query, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+  });
+  // select all tasks with groups the user is part of
 });
 
 app.get("/get_groups", (req, res) => {
-  if (req.user.id || req.session.user.id) {
-    getGroups(req.user.id, (err: Error, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  }
+  if (!checkAuth(req, res)) return;
+  getGroups(req.user.id, (err: Error, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
 });
