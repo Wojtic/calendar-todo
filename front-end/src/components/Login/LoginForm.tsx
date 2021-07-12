@@ -47,7 +47,6 @@ const LoginForm: FC<LoginProps> = (props) => {
           }
         } catch (e) {}
       } else {
-        // always wiht proxy
         console.log("HTTP error: " + response.status);
       }
     } else {
