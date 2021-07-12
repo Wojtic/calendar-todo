@@ -1,5 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy;
-const bc = require("bcrypt"); // is imported in both files
+const index = require("./index");
 
 function initialize(passport, getUserByEmail, getUserById) {
   const authenticateUser = async (email, password, done) => {
@@ -10,7 +10,7 @@ function initialize(passport, getUserByEmail, getUserById) {
       }
 
       try {
-        if (await bc.compare(password, user.password)) {
+        if (await index.bcrypt.compare(password, user.password)) {
           return done(null, user);
         } else {
           return done(null, false, { message: "Password incorrect" });

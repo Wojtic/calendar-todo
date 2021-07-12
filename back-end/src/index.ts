@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+exports.bcrypt = bcrypt;
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
