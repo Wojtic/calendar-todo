@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navigation from "./Navigation/Navigation";
 import LoginForm from "./Login/LoginForm";
 import Home from "./Home/Home";
@@ -9,6 +9,13 @@ import TodoList from "./Todo/TodoList";
 
 export default function App() {
   const [userName, setUserName] = React.useState(null);
+  useEffect(() => {
+    if (!userName && sessionStorage.getItem("user_name") != null) {
+      setUserName(sessionStorage.getItem("user_name"));
+    } else if (userName) {
+      sessionStorage.setItem("user_name", userName);
+    }
+  }, [userName]);
 
   return (
     <Router>

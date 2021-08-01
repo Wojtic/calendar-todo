@@ -1,13 +1,16 @@
 import React from "react";
 import Todo from "./Todo";
 import PopUp from "./popUp";
-import { useState, useEffect } from "react";
+import { UserNameContext } from "../contexts/UserContext";
+import { useState, useEffect, useContext } from "react";
 
 export default function TodoList() {
+  const { userName } = useContext(UserNameContext);
   const [popUp, set_popUp] = useState(false);
   const [todos, set_todos] = useState([]);
 
   const getTasks = async () => {
+    if (!userName) return;
     let response = await fetch("get_tasks", {
       method: "GET",
     });
@@ -17,6 +20,7 @@ export default function TodoList() {
 
   useEffect(() => {
     getTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -27,24 +31,27 @@ export default function TodoList() {
           update_tasks={() => getTasks()}
         />
       )}
-      <div className="todo_whole">
-        <div className="todo_menu">
-          <button id="create_task_btn" onClick={() => set_popUp(true)}>
-            Vytvořit nový úkol
-          </button>
+      {userName && (
+        <div className="todo_whole">
+          <div className="todo_menu">
+            <button id="create_task_btn" onClick={() => set_popUp(true)}>
+              Vytvořit nový úkol
+            </button>
+          </div>
+          <div className="todo_list">
+            {todos.map((todo) => {
+              return (
+                <Todo
+                  key={todo.task_id}
+                  checked={false}
+                  task={todo.task_name}
+                  time={todo.task_date}
+                />
+              );
+            })}
+          </div>
         </div>
-        <div className="todo_list">
-          {todos.map((todo) => {
-            return (
-              <Todo
-                checked={false}
-                task={todo.task_name}
-                time={todo.task_date}
-              />
-            );
-          })}
-        </div>
-      </div>
+      )}
     </>
   );
 }
