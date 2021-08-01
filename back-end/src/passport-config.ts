@@ -1,5 +1,5 @@
 const LocalStrategy = require("passport-local").Strategy;
-const index = require("./index");
+import { index } from "./index";
 
 function initialize(passport, getUserByEmail, getUserById) {
   const authenticateUser = async (email, password, done) => {

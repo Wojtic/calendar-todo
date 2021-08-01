@@ -34,3 +34,14 @@ main {
   color: $text;
   margin: 0 auto;
 }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 90;
+  opacity: 0.5;
+}

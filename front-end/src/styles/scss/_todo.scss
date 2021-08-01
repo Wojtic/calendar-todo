@@ -1,52 +1,131 @@
-.todo {
-  @include flex-center(row, center);
-  @include width-height(70%, 2rem);
+.todo_whole {
+  width: 70%;
 
-  background-color: $main-light;
-  border: 2px dotted $main;
+  .todo_menu {
+    margin: 0.5rem 0;
+    @include flex-center(row, left);
+    @include width-height(100%, 2rem);
 
-  cursor: pointer;
-  * {
-    cursor: pointer;
-  }
-
-  .time {
-    width: 3.5rem;
-    color: rgb(95, 95, 95);
-  }
-
-  .task {
-    flex-grow: 1;
-  }
-
-  input {
-    @include width-height(1rem, 1rem);
-    margin: 0.5rem;
-  }
-
-  .fa-trash {
-    @include width-height(1rem, 100%);
-    line-height: 2rem;
-    padding: 0 0.5rem;
-
-    color: rgb(255, 107, 107);
-
-    &:hover {
-      color: rgb(255, 163, 163);
-      transition: color 0.3s;
+    #create_task_btn {
+      @include width-height(8rem, 2rem);
+      border: 2px solid $main;
+      border-radius: 0.5rem;
+      background: none;
+      &:hover {
+        background-color: $main-light;
+        transition: 200ms;
+      }
     }
   }
 
-  .fa-ellipsis-v {
-    @include width-height(0.5rem, 100%);
-    line-height: 2rem;
-    padding: 0 0.2rem;
+  .todo_list {
+    .todo {
+      @include flex-center(row, center);
+      @include width-height(100%, 2rem);
 
-    color: white;
+      background-color: $main-light;
+      border: 2px dotted $main;
+
+      cursor: pointer;
+      * {
+        cursor: pointer;
+      }
+
+      .time {
+        width: 3.5rem;
+        color: rgb(95, 95, 95);
+      }
+
+      .task {
+        flex-grow: 1;
+      }
+
+      input {
+        @include width-height(1rem, 1rem);
+        margin: 0.5rem;
+      }
+
+      .fa-trash {
+        @include width-height(1rem, 100%);
+        line-height: 2rem;
+        padding: 0 0.5rem;
+
+        color: rgb(255, 107, 107);
+
+        &:hover {
+          color: rgb(255, 163, 163);
+          transition: color 0.3s;
+        }
+      }
+
+      .fa-ellipsis-v {
+        @include width-height(0.5rem, 100%);
+        line-height: 2rem;
+        padding: 0 0.2rem;
+
+        color: white;
+
+        &:hover {
+          color: rgb(102, 102, 102);
+          transition: color 0.3s;
+        }
+      }
+    }
+  }
+}
+
+.todo_popUp {
+  z-index: 100;
+  position: absolute;
+  @include width-height(20rem, 15rem);
+  background-color: white;
+  @include flex-center(row, center);
+  padding: 1.5rem 1rem;
+  border-radius: 10%;
+
+  .fa-times {
+    position: absolute;
+    top: 0.4rem;
+    right: 1rem;
 
     &:hover {
-      color: rgb(102, 102, 102);
-      transition: color 0.3s;
+      color: rgb(168, 168, 168);
+      transition: 0.3s;
+    }
+  }
+  input {
+    height: 1.2rem;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include width-height(90%, 100%);
+
+    #todo_date {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .form_section {
+      display: flex;
+      flex-direction: column;
+      height: 3rem;
+    }
+
+    button {
+      @include width-height(7rem, 1.5rem);
+      align-self: center;
+      background: none;
+      border-radius: 0.5rem;
+      border: 2px solid $main;
+      box-shadow: 4px 4px $main-light;
+
+      &:hover {
+        background-color: $main-light;
+        transition: 200ms;
+      }
     }
   }
 }

@@ -28,7 +28,7 @@ nav ul {
   background-color: inherit;
   height: 100%;
   display: flex;
-  z-index: 100;
+  z-index: 10;
 }
 
 nav ul li {
@@ -275,38 +275,65 @@ nav .burger div {
   font-size: small;
 }
 
-.todo {
+.todo_whole {
+  width: 70%;
+}
+
+.todo_whole .todo_menu {
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  width: 100%;
+  height: 2rem;
+}
+
+.todo_whole .todo_menu #create_task_btn {
+  width: 8rem;
+  height: 2rem;
+  border: 2px solid #335599;
+  border-radius: 0.5rem;
+  background: none;
+}
+
+.todo_whole .todo_menu #create_task_btn:hover {
+  background-color: lightblue;
+  transition: 200ms;
+}
+
+.todo_whole .todo_list .todo {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   height: 2rem;
   background-color: lightblue;
   border: 2px dotted #335599;
   cursor: pointer;
 }
 
-.todo * {
+.todo_whole .todo_list .todo * {
   cursor: pointer;
 }
 
-.todo .time {
+.todo_whole .todo_list .todo .time {
   width: 3.5rem;
   color: #5f5f5f;
 }
 
-.todo .task {
+.todo_whole .todo_list .todo .task {
   flex-grow: 1;
 }
 
-.todo input {
+.todo_whole .todo_list .todo input {
   width: 1rem;
   height: 1rem;
   margin: 0.5rem;
 }
 
-.todo .fa-trash {
+.todo_whole .todo_list .todo .fa-trash {
   width: 1rem;
   height: 100%;
   line-height: 2rem;
@@ -314,12 +341,12 @@ nav .burger div {
   color: #ff6b6b;
 }
 
-.todo .fa-trash:hover {
+.todo_whole .todo_list .todo .fa-trash:hover {
   color: #ffa3a3;
   transition: color 0.3s;
 }
 
-.todo .fa-ellipsis-v {
+.todo_whole .todo_list .todo .fa-ellipsis-v {
   width: 0.5rem;
   height: 100%;
   line-height: 2rem;
@@ -327,9 +354,73 @@ nav .burger div {
   color: white;
 }
 
-.todo .fa-ellipsis-v:hover {
+.todo_whole .todo_list .todo .fa-ellipsis-v:hover {
   color: #666666;
   transition: color 0.3s;
+}
+
+.todo_popUp {
+  z-index: 100;
+  position: absolute;
+  width: 20rem;
+  height: 15rem;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  border-radius: 10%;
+}
+
+.todo_popUp .fa-times {
+  position: absolute;
+  top: 0.4rem;
+  right: 1rem;
+}
+
+.todo_popUp .fa-times:hover {
+  color: #a8a8a8;
+  transition: 0.3s;
+}
+
+.todo_popUp input {
+  height: 1.2rem;
+}
+
+.todo_popUp form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 90%;
+  height: 100%;
+}
+
+.todo_popUp form #todo_date {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.todo_popUp form .form_section {
+  display: flex;
+  flex-direction: column;
+  height: 3rem;
+}
+
+.todo_popUp form button {
+  width: 7rem;
+  height: 1.5rem;
+  align-self: center;
+  background: none;
+  border-radius: 0.5rem;
+  border: 2px solid #335599;
+  box-shadow: 4px 4px lightblue;
+}
+
+.todo_popUp form button:hover {
+  background-color: lightblue;
+  transition: 200ms;
 }
 
 * {
@@ -363,5 +454,16 @@ main {
   position: relative;
   color: #000;
   margin: 0 auto;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  z-index: 90;
+  opacity: 0.5;
 }
 /*# sourceMappingURL=style.css.map */

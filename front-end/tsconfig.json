@@ -8,7 +8,11 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "removeComments": false,
-    "lib": ["DOM", "ES2021", "DOM.Iterable"],
+    "lib": [
+      "DOM",
+      "ES2021",
+      "DOM.Iterable"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,6 +23,10 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["./src/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

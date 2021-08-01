@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   const serverTest = async () => {
-    let response = await fetch("get_groups", {
+    let response = await fetch("get_tasks", {
       method: "GET",
     });
     response = await response.json();
