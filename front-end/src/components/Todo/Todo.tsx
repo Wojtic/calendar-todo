@@ -8,6 +8,11 @@ interface TodoProps {
 
 const Todo: FC<TodoProps> = (props) => {
   const [checked, setChecked] = useState(props.checked);
+
+  const formatDate = (date) => {
+    // from YYYY-MM-DDT.... to DD.MM
+    return date.substring(8, 10) + "." + date.substring(5, 7);
+  };
   return (
     <div className="todo">
       <input
@@ -16,9 +21,8 @@ const Todo: FC<TodoProps> = (props) => {
         defaultChecked={checked}
         onClick={() => setChecked(!checked)}
       />
-      <p className="time">{props.time}</p>
+      <p className="time">{formatDate(props.time)}</p>
       <p className="task">{props.task}</p>
-      <i className="fa fa-trash fa-lg"></i>
       <i className="fa fa-ellipsis-v fa-lg"></i>
     </div>
   );

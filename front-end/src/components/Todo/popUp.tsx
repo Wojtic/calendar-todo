@@ -2,6 +2,7 @@ import React, { useState, FC } from "react";
 
 interface Props {
   close_handler;
+  update_tasks;
 }
 const PopUp: FC<Props> = (props) => {
   const [name, set_name] = useState("");
@@ -28,6 +29,7 @@ const PopUp: FC<Props> = (props) => {
       },
       body: JSON.stringify(data),
     });
+    props.update_tasks();
     props.close_handler();
   };
 

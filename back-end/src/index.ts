@@ -136,10 +136,13 @@ export module index {
   app.get("/get_tasks", (req, res) => {
     if (!checkAuth(req, res)) return;
     // select all tasks with user id
-    let query = `SELECT * FROM task_to_owner WHERE user_id=${req.user.id}`;
+    let query = `SELECT tasks.task_id,task_name,task_description,task_date
+                  FROM tasks
+                  INNER JOIN task_to_owner ON tasks.task_id = task_to_owner.task_id
+                  WHERE user_id = ${req.user.id}`;
     con.query(query, (err, result) => {
       if (err) throw err;
-      console.log(result);
+      else res.send(JSON.parse(JSON.stringify(result)));
     });
     // select all tasks with groups the user is part of
   });

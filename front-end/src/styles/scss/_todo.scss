@@ -26,6 +26,8 @@
       background-color: $main-light;
       border: 2px dotted $main;
 
+      margin: 0.2rem 0;
+
       cursor: pointer;
       * {
         cursor: pointer;
@@ -43,19 +45,6 @@
       input {
         @include width-height(1rem, 1rem);
         margin: 0.5rem;
-      }
-
-      .fa-trash {
-        @include width-height(1rem, 100%);
-        line-height: 2rem;
-        padding: 0 0.5rem;
-
-        color: rgb(255, 107, 107);
-
-        &:hover {
-          color: rgb(255, 163, 163);
-          transition: color 0.3s;
-        }
       }
 
       .fa-ellipsis-v {

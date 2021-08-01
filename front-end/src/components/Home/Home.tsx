@@ -1,13 +1,7 @@
 import React from "react";
 
 const Home = () => {
-  const serverTest = async () => {
-    let response = await fetch("get_tasks", {
-      method: "GET",
-    });
-    response = await response.json();
-    console.log(response);
-  };
+  const serverTest = async () => {};
 
   return (
     <>

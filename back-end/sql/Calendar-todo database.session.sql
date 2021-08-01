@@ -2,6 +2,13 @@
 select *
 from users;
 -- @BLOCK
+SELECT task_name,
+    task_description,
+    task_date
+FROM tasks
+    INNER JOIN task_to_owner ON tasks.task_id = task_to_owner.task_id
+WHERE user_id = 2;
+-- @BLOCK
 SELECT *
 FROM tasks;
 -- @BLOCK

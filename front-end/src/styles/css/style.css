@@ -311,6 +311,7 @@ nav .burger div {
   height: 2rem;
   background-color: lightblue;
   border: 2px dotted #335599;
+  margin: 0.2rem 0;
   cursor: pointer;
 }
 
@@ -331,19 +332,6 @@ nav .burger div {
   width: 1rem;
   height: 1rem;
   margin: 0.5rem;
-}
-
-.todo_whole .todo_list .todo .fa-trash {
-  width: 1rem;
-  height: 100%;
-  line-height: 2rem;
-  padding: 0 0.5rem;
-  color: #ff6b6b;
-}
-
-.todo_whole .todo_list .todo .fa-trash:hover {
-  color: #ffa3a3;
-  transition: color 0.3s;
 }
 
 .todo_whole .todo_list .todo .fa-ellipsis-v {

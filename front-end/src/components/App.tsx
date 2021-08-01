@@ -3,9 +3,9 @@ import Navigation from "./Navigation/Navigation";
 import LoginForm from "./Login/LoginForm";
 import Home from "./Home/Home";
 import Calendar from "./Calendar/Calendar";
-import Todo from "./Todo/TodoList";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserNameContext } from "./contexts/UserContext";
+import TodoList from "./Todo/TodoList";
 
 export default function App() {
   const [userName, setUserName] = React.useState(null);
@@ -26,7 +26,7 @@ export default function App() {
               render={(props) => <LoginForm {...props} isRegister={true} />}
             />
             <Route path="/calendar" exact component={Calendar} />
-            <Route path="/todo" exact component={Todo} />
+            <Route path="/todo" exact component={TodoList} />
           </Switch>
         </main>
       </UserNameContext.Provider>
