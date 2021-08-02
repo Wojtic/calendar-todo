@@ -18,6 +18,9 @@ FROM task_to_owner;
 SELECT *
 FROM user_groups;
 -- @BLOCK
+DELETE FROM tasks
+WHERE task_id = 1;
+-- @BLOCK
 show tables;
 -- @BLOCK
 TRUNCATE table users;

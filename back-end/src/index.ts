@@ -154,4 +154,15 @@ export module index {
       res.send(result);
     });
   });
+
+  app.post("/remove_task", jsonParser, (req, res) => {
+    if (!checkAuth(req, res)) return;
+
+    let query = `DELETE tasks , task_to_owner  FROM tasks INNER JOIN task_to_owner  
+WHERE tasks.task_id= task_to_owner.task_id and tasks.task_id = ${req.body.task_id}`;
+    con.query(query, (err, result) => {
+      if (err) throw err;
+      else res.sendStatus(200);
+    });
+  });
 }

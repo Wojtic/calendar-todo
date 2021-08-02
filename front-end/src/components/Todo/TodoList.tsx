@@ -44,8 +44,10 @@ export default function TodoList() {
                 <Todo
                   key={todo.task_id}
                   checked={false}
+                  id={todo.task_id}
                   task={todo.task_name}
                   time={todo.task_date}
+                  update_tasks={() => getTasks()}
                 />
               );
             })}
