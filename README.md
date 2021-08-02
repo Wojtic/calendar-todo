@@ -75,3 +75,13 @@ Including all groups the user is part of.
 ```http
   GET /get_tasks
 ```
+
+#### Remove task by id
+
+```http
+  POSt /remove_task
+```
+
+| Parameter | Description                  |
+| :-------- | :--------------------------- |
+| `task_id` | **Required**. Id of the task |
