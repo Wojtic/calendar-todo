@@ -82,9 +82,7 @@
       transition: 0.3s;
     }
   }
-  input {
-    height: 1.2rem;
-  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -98,9 +96,36 @@
     }
 
     .form_section {
+      font-size: 1.1rem;
+      position: relative;
       display: flex;
       flex-direction: column;
-      height: 3rem;
+      height: 1.5rem;
+
+      #date-label {
+        position: absolute;
+        pointer-events: none;
+        left: 0rem;
+        top: -1.5rem;
+      }
+
+      input:focus + .floating-label,
+      input:not(:placeholder-shown) + .floating-label {
+        top: -1.5rem;
+        left: 0rem;
+      }
+
+      input {
+        height: 1.5rem;
+      }
+
+      .floating-label {
+        position: absolute;
+        pointer-events: none;
+        left: 0.2rem;
+        top: 0.1rem;
+        transition: 0.2s ease all;
+      }
     }
 
     button {

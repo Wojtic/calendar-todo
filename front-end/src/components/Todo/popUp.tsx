@@ -40,11 +40,10 @@ const PopUp: FC<Props> = (props) => {
         <i className="fa fa-times fa-2x" onClick={props.close_handler}></i>
         <form action="#" id="todo_popUp_form" onSubmit={handleSubmit}>
           <div className="form_section">
-            <label htmlFor="name">Úkol:</label>
             <input
               type="text"
               name="name"
-              placeholder="Napiš úkol"
+              placeholder=" "
               required
               minLength={1}
               value={name}
@@ -52,22 +51,27 @@ const PopUp: FC<Props> = (props) => {
                 set_name(e.target.value);
               }}
             />
+            <label className="floating-label">Úkol</label>
           </div>
           <div className="form_section">
-            <label htmlFor="description">Popis:</label>
             <input
               type="text"
               name="description"
-              placeholder="Napiš popis úkolu"
+              placeholder=" "
               minLength={1}
               value={description}
               onChange={(e) => {
                 set_description(e.target.value);
               }}
             />
+            <label htmlFor="description" className="floating-label">
+              Popis
+            </label>
           </div>
           <div className="form_section">
-            <label htmlFor="date">Do:</label>
+            <label htmlFor="date" id="date-label">
+              Do
+            </label>
             <div id="todo_date">
               <input
                 type="date"

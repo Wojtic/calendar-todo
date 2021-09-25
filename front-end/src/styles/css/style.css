@@ -372,10 +372,6 @@ nav .burger div {
   transition: 0.3s;
 }
 
-.todo_popUp input {
-  height: 1.2rem;
-}
-
 .todo_popUp form {
   display: flex;
   flex-direction: column;
@@ -391,9 +387,36 @@ nav .burger div {
 }
 
 .todo_popUp form .form_section {
+  font-size: 1.1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  height: 3rem;
+  height: 1.5rem;
+}
+
+.todo_popUp form .form_section #date-label {
+  position: absolute;
+  pointer-events: none;
+  left: 0rem;
+  top: -1.5rem;
+}
+
+.todo_popUp form .form_section input:focus + .floating-label,
+.todo_popUp form .form_section input:not(:placeholder-shown) + .floating-label {
+  top: -1.5rem;
+  left: 0rem;
+}
+
+.todo_popUp form .form_section input {
+  height: 1.5rem;
+}
+
+.todo_popUp form .form_section .floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 0.2rem;
+  top: 0.1rem;
+  transition: 0.2s ease all;
 }
 
 .todo_popUp form button {
