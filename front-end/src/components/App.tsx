@@ -6,6 +6,7 @@ import Calendar from "./Calendar/Calendar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserNameContext } from "./contexts/UserContext";
 import TodoList from "./Todo/TodoList";
+import Groups from "./Groups/Groups";
 
 export default function App() {
   const [userName, setUserName] = React.useState(null);
@@ -34,6 +35,7 @@ export default function App() {
             />
             <Route path="/calendar" exact component={Calendar} />
             <Route path="/todo" exact component={TodoList} />
+            <Route path="/groups" exact component={Groups} />
           </Switch>
         </main>
       </UserNameContext.Provider>

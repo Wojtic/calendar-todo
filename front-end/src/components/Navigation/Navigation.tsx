@@ -38,6 +38,14 @@ const Navigation: FC = () => {
             Kalendář
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            activeStyle={{ textShadow: "0px 0px 1px white" }}
+            to="groups"
+          >
+            Skupiny
+          </NavLink>
+        </li>
         {userName == null ? (
           <li>
             <NavLink
