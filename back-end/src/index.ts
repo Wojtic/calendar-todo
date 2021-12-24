@@ -1,5 +1,7 @@
 import { account } from "./account";
 export module index {
+  // -------------------------------------------------- Imports
+
   const express = require("express");
   export const bcrypt = require("bcrypt");
   const passport = require("passport");
@@ -12,6 +14,8 @@ export module index {
 
   const jsonParser = bodyParser.json();
 
+  // -------------------------------------------------- Database
+
   export let con = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -23,6 +27,8 @@ export module index {
     if (err) throw err;
     console.log("Connected to MySQL");
   });
+
+  // -------------------------------------------------- Passport
 
   const initializePassport = require("./passport-config");
   initializePassport(
@@ -47,6 +53,8 @@ export module index {
     }
   );
 
+  // -------------------------------------------------- Express
+
   app.use(express.urlencoded({ extended: false }));
 
   app.listen(3080, () => console.log("Listening at 3080"));
@@ -63,6 +71,8 @@ export module index {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  // -------------------------------------------------- Routes
+
   const checkAuth = (req, res) => {
     if (req.hasOwnProperty("user")) {
       return true;
@@ -71,6 +81,8 @@ export module index {
       return false;
     }
   };
+
+  // -------------------------------------------------- Account
 
   app.post("/login", passport.authenticate("local"), (req, res) => {
     if (req.user || req.session.user) {
@@ -99,6 +111,8 @@ export module index {
       }
     );
   });
+
+  // -------------------------------------------------- Tasks
 
   app.post("/create_task", jsonParser, (req, res) => {
     if (!(req.body.name && req.body.date && req.body.owner)) {
@@ -147,14 +161,6 @@ export module index {
     // select all tasks with groups the user is part of
   });
 
-  app.get("/get_groups", (req, res) => {
-    if (!checkAuth(req, res)) return;
-    account.getGroups(req.user.id, (err: Error, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  });
-
   app.post("/remove_task", jsonParser, (req, res) => {
     if (!checkAuth(req, res)) return;
 
@@ -164,5 +170,27 @@ WHERE tasks.task_id= task_to_owner.task_id and tasks.task_id = ${req.body.task_i
       if (err) throw err;
       else res.sendStatus(200);
     });
+  });
+
+  // -------------------------------------------------- Groups
+
+  app.get("/get_groups", (req, res) => {
+    if (!checkAuth(req, res)) return;
+    account.getGroups(req.user.id, (err: Error, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
+  });
+
+  app.get("/join_group", (req, res) => {
+    if (!checkAuth(req, res)) return;
+    account.joinGroup(
+      req.user.id,
+      req.query.group_name,
+      (err: Error, result) => {
+        if (err) throw err;
+        res.sendStatus(200);
+      }
+    );
   });
 }
