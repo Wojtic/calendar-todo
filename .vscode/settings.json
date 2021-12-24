@@ -1,0 +1,24 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/front-end/src/styles/css"
+    }
+  ],
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "calendar-todo",
+      "database": "calendar_todo",
+      "username": "vscode",
+      "password": "iwmf6uG6vWTHdm"
+    }
+  ]
+}

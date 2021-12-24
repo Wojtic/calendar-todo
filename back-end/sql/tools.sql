@@ -2,6 +2,8 @@
 select *
 from users;
 -- @BLOCK
+SHOW TABLES;
+-- @BLOCK
 SELECT task_name,
     task_description,
     task_date
@@ -21,8 +23,6 @@ FROM user_groups;
 DELETE FROM tasks
 WHERE task_id = 1;
 -- @BLOCK
-show tables;
--- @BLOCK
 TRUNCATE table users;
 -- @BLOCK
 TRUNCATE TABLE tasks;
@@ -38,3 +38,11 @@ DROP TABLE tasks;
 DROP TABLE user_groups;
 -- @BLOCK
 DROP TABLE user_to_group;
+-- @BLOCK
+DROP TABLE task_to_owner;
+-- @BLOCK
+DROP TABLE users;
+-- @BLOCK
+DROP TABLE subgroups;
+-- @BLOCK
+DROP TABLE user_to_subgroup;
