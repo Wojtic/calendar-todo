@@ -71,4 +71,66 @@ export module account {
       }
     });
   };
+
+  export const leaveGroup = (user, group, callback) => {
+    // check if group exists
+    let sql = `SELECT * FROM user_groups WHERE  group_name='${group}'`;
+    index.con.query(sql, (err, result) => {
+      if (err) callback(err, null);
+      if (result[0]) {
+        // check if user is already in group
+        sql = `SELECT * FROM user_to_group WHERE user_id='${user}' AND group_name='${group}'`;
+        index.con.query(sql, (err, result) => {
+          if (err) callback(err, null);
+          if (result[0]) {
+            // remove user from group
+            sql = `DELETE FROM user_to_group WHERE user_id='${user}' AND group_name='${group}'`;
+            index.con.query(sql, (err, result) => {
+              if (err) callback(err, null);
+              callback(null, "User removed from group");
+            });
+          } else {
+            callback(null, "User not in group");
+          }
+        });
+      } else {
+        callback(null, "Group does not exist");
+      }
+    });
+  };
+
+  export const createGroup = (user, group, callback) => {
+    // check if group exists
+    let sql = `SELECT * FROM user_groups WHERE  group_name='${group}'`;
+    index.con.query(sql, (err, result) => {
+      if (err) callback(err, null);
+      if (result[0]) {
+        callback(null, "Group already exists");
+      } else {
+        // create group
+        sql = `INSERT INTO user_groups (group_name) VALUES ('${group}')`;
+        index.con.query(sql, (err, result) => {
+          if (err) callback(err, null);
+          // add user to group
+          sql = `INSERT INTO user_to_group (user_id, group_name) VALUES ('${user}', '${group}')`;
+          index.con.query(sql, (err, result) => {
+            if (err) callback(err, null);
+            callback(null, "Group created");
+          });
+        });
+      }
+    });
+  };
+
+  export const getAllGroups = (callback) => {
+    let sql = `SELECT * FROM user_groups`;
+    index.con.query(sql, (err, result) => {
+      if (err) callback(err, null);
+      if (result[0]) {
+        callback(null, JSON.parse(JSON.stringify(result)));
+      } else {
+        callback(null, []);
+      }
+    });
+  };
 }

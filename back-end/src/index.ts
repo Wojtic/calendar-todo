@@ -121,6 +121,7 @@ export module index {
       let queryString = `INSERT INTO tasks (task_name, task_description, task_date) VALUES ('${
         req.body.name
       }', '${req.body.description || ""}', '${req.body.date}')`;
+      console.log(queryString);
 
       con.query(queryString, (err, response) => {
         if (err) throw err;
@@ -192,5 +193,36 @@ WHERE tasks.task_id= task_to_owner.task_id and tasks.task_id = ${req.body.task_i
         res.sendStatus(200);
       }
     );
+  });
+
+  app.get("/leave_group", (req, res) => {
+    if (!checkAuth(req, res)) return;
+    account.leaveGroup(
+      req.user.id,
+      req.query.group_name,
+      (err: Error, result) => {
+        if (err) throw err;
+        res.sendStatus(200);
+      }
+    );
+  });
+
+  app.get("/create_group", (req, res) => {
+    if (!checkAuth(req, res)) return;
+    account.createGroup(
+      req.user.id,
+      req.query.group_name,
+      (err: Error, result) => {
+        if (err) throw err;
+        res.sendStatus(200);
+      }
+    );
+  });
+
+  app.get("/get_all_groups", (req, res) => {
+    account.getAllGroups((err: Error, result) => {
+      if (err) throw err;
+      res.send(result);
+    });
   });
 }
