@@ -1,5 +1,7 @@
 # Calendar-Todo (looking for better name)
 
+I've stopped developing this application! (Only todo list and accounts work)
+
 Web aplication for calendar (more like time table) and to-do lists
 
 ## API Reference
